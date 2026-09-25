@@ -98,3 +98,34 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Em uma frase.** Nenhuma escolha muda o resultado neste arquivo; o que dá para corrigir é o jeito de patrocinar.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+---
+
+## Fase 4 — Estratégia e plano de rastreamento (25/09/2026)
+
+**O que eu queria saber.** O que o Head de Marketing pode fazer na segunda-feira, se o arquivo não diz o que funciona.
+
+**O que pedi.** Seguir para a estratégia, usando as skills de influencer marketing, testes A/B e analytics como base.
+
+**O que a IA respondeu.**
+- A premissa de custo do meu plano (preço por faixa de creator) não funciona, porque a faixa não é confiável. Aplicar as faixas daria cerca de US$ 281 milhões em dois anos, calculados sobre seguidores sorteados.
+- Cinco regras de patrocínio, cada uma com o número que a motiva, como medir e quando revisar: fit, divulgação explícita, foco, parceria recorrente e rastreamento.
+- 94,3% dos posts patrocinados têm pelo menos um de três problemas: sem fit, divulgação implícita ou parceria de um post só.
+- Com a variação das métricas ainda desconhecida, um teste que procure 10% precisa de cerca de 15 semanas; um que procure 20% cabe em 4.
+- Plano de rastreamento com 9 eventos, cada um ligado à decisão que alimenta e ao que falta no arquivo do desafio.
+
+**Como conferi.**
+- A calculadora de amostra tem testes escritos antes do código. O resultado bate com a fórmula feita à mão e com a biblioteca statsmodels (52 testes no total).
+- Cada número da estratégia foi procurado na saída do notebook (seção 3) antes do commit.
+- A regra de divulgação cita fontes conferidas na web: a página da FTC e a atualização do guia do CONAR de 13/05/2026. Como não achei o documento oficial de 2026 do CONAR, o texto cita dele só o princípio de identificar a publicidade.
+- As faixas de preço e a janela de direito de uso aparecem como referência da skill, não como fato de mercado verificado.
+
+**O que decidi.**
+- Custo implícito: premissa única de US$ 1.500 por post patrocinado, com sensibilidade de US$ 500 a US$ 5.000, ajustável no Radar.
+- Ordem dos testes: H1 (fit), H2 (parceria recorrente), H3 (portfólio micro e nano), pela nota ICE.
+- Donos das regras: time de parcerias (fit e recorrência), jurídico e social (divulgação), Head de Marketing (foco), analista de dados (rastreamento).
+- Primeira rodada de testes procura efeitos de 20%, para caber em 30 dias.
+
+**Em uma frase.** A estratégia corrige o patrocínio já e usa 30 dias de testes rastreados para gerar o dado que o arquivo não tem.
+
+**Transcript.** Sessão 1, em `evidencias/transcripts/`.
