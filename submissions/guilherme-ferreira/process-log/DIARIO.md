@@ -129,3 +129,47 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Em uma frase.** A estratégia corrige o patrocínio já e usa 30 dias de testes rastreados para gerar o dado que o arquivo não tem.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+---
+
+## Fase 5 — Radar de Conteúdo (25/09/2026)
+
+**O que eu queria saber.** Se dava para entregar ao time uma ferramenta de segunda-feira que funcionasse hoje com o arquivo do desafio e amanhã com o dado real, com a cara do G4.
+
+**O que pedi.** Usar o site do G4 como base de UX. Depois aprovei o desenho parte por parte, a especificação ([docs/radar_desenho.md](../docs/radar_desenho.md)) e o plano, e pedi a execução nesta sessão.
+
+**O que a IA respondeu.**
+- Um desenho em quatro partes, que aprovei uma a uma: dados vindos de resumos gerados por script (a base bruta não entra no repositório), as quatro telas, o visual do G4 com rodapé de protótipo, e testes e deploy.
+- No Streamlit Cloud, com o app numa subpasta, o arquivo de tema teria de ficar na raiz do repositório, o que as regras do desafio proíbem. Por isso o visual foi aplicado por CSS.
+- Um plano de 10 tarefas, cada uma com os testes escritos antes do código. No fim, eram 83 testes.
+
+**Como conferi.**
+- Cada tarefa terminou com a suíte inteira passando e um commit. As decisões fora do plano ficaram registradas, com motivo e custo se estiverem erradas.
+- Rodei o app e olhei cada tela, na largura normal e na de celular (375 px, sem rolagem lateral).
+- A conferência na tela pegou quatro problemas que os testes não pegavam, e todos foram corrigidos:
+  - com o sistema em modo escuro, os controles e as tabelas ficavam escuros sobre o fundo claro;
+  - com seis indicadores numa linha, os números ficavam cortados;
+  - "abaixo do limiar" aparecia sem explicação;
+  - a tabela do mapa mostrava uma coluna de índice.
+- A versão 1.64 do Streamlit recusa fixar o tema pelo código ("cannot be set on the fly"). Isso foi testado antes de escolher o caminho do CSS.
+- **Revisão final independente.** Outra instância do Claude, no modelo Opus, que não participou da implementação:
+  - conferiu a estatística contra a conta feita post a post;
+  - regerou os resumos a partir do CSV;
+  - olhou as telas em modo claro, escuro e no celular.
+
+  Não achou nenhum problema crítico. Achou quatro importantes, todos corrigidos, cada um com um teste escrito antes da correção ou com medição na tela antes e depois:
+  - no celular, as tabelas escondiam a coluna "Classe";
+  - no modo escuro, os ícones de ajuda e os botões de opção sumiam;
+  - o brief quebraria com dados de outro formato;
+  - a semana padrão estava diferente da especificação, por um erro do plano.
+
+  Duas observações menores foram tratadas como importantes e corrigidas: a legenda tinha contraste baixo e um texto dizia "dos posts" onde deveria dizer "dos posts patrocinados". Outras oito ficaram registradas para depois.
+
+**O que decidi.**
+- UX do g4business.com, com o logo do G4 e o rodapé "Protótipo de candidato ao AI Master Challenge, sem vínculo oficial com o G4".
+- Dados vindos de resumos gerados por script; as quatro telas; top 3 e bottom 3 por grupo da semana.
+- Execução nesta sessão, com uma revisão final independente.
+
+**Em uma frase.** O Radar leva para a segunda-feira o que a análise mostrou: não mudar o mix por causa de ruído, corrigir o patrocínio e calcular o próximo teste antes de rodá-lo.
+
+**Transcript.** Sessão 1, em `evidencias/transcripts/`.

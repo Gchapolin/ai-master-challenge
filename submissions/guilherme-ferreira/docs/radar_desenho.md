@@ -10,7 +10,7 @@ O Head de Marketing e o time de social media abrem o Radar na segunda-feira e, e
 - se alguma diferença de desempenho virou sinal;
 - de quantos posts e semanas precisa o próximo teste.
 
-O app vale hoje para o arquivo do desafio e amanhã para o dado do [plano de rastreamento](plano_rastreamento.md), que usa as mesmas colunas.
+O app vale hoje para o arquivo do desafio. Amanhã, vale para o dado do [plano de rastreamento](plano_rastreamento.md), desde que ele seja convertido para as colunas do arquivo do desafio; esse conversor fica fora deste escopo.
 
 **Critério de sucesso:** alguém não técnico abre o app, entende a tela de abertura sem ajuda, ajusta o custo por post, calcula o tamanho de um teste e sai com o brief da semana.
 
@@ -50,7 +50,7 @@ solution/
 | `laudo.csv` | `chave, valor`: índices de dispersão das quatro métricas, creators com seguidores variando, razão mediana, correlação seguidores x views, parcelas redondas, fit observado e esperado por sorteio, patrocinadores de um post só, posts em chinês, japonês ou hindi com escrita da língua |
 | `simulacao.csv` | cópia de `resultados/validacao_metodo_resumo.csv` |
 | `celulas.csv` | saída de `mapa_celulas` para os 4 objetivos (60 células x 4), com a coluna `objetivo` |
-| `semanas.csv` | por semana: posts, patrocinados, sem fit, divulgação implícita, só hashtags, em parceria de um post só, com pelo menos um dos três problemas |
+| `semanas.csv` | por semana: dias com post, data do último post, posts, patrocinados, sem fit, divulgação implícita, só hashtags, em parceria de um post só, com pelo menos um dos três problemas |
 | `semanas_grupos.csv` | por semana e grupo (`dimensao`, `valor`): posts, média e variância do engajamento; mais uma linha `total` por semana |
 
 **Definições:**
