@@ -22,6 +22,8 @@ OBJETIVOS = {
     "compartilhamento": "Compartilhamento (shares por view)",
 }
 CLASSES = ["sinal", "abaixo do limiar", "ruído", "poucos posts"]
+TODAS = "Todas"
+FILTROS = [("Plataforma", "platform", "plataforma"), ("Categoria", "content_category", "categoria"), ("Formato", "content_type", "formato")]
 
 
 def preparar(celulas):
@@ -86,19 +88,11 @@ def main():
         + ". Os filtros só escondem células; a classe vem do mapa completo."
     )
 
-    coluna1, coluna2, coluna3 = st.columns(3)
-    todas_plataformas = sorted(celulas["platform"].unique())
-    todas_categorias = sorted(celulas["content_category"].unique())
-    todos_formatos = sorted(celulas["content_type"].unique())
-    plataformas = coluna1.multiselect("Plataformas", todas_plataformas, default=todas_plataformas, key="plataformas")
-    categorias = coluna2.multiselect("Categorias", todas_categorias, default=todas_categorias, key="categorias")
-    formatos = coluna3.multiselect("Formatos", todos_formatos, default=todos_formatos, key="formatos")
-
-    visiveis = do_objetivo[
-        do_objetivo["platform"].isin(plataformas)
-        & do_objetivo["content_category"].isin(categorias)
-        & do_objetivo["content_type"].isin(formatos)
-    ]
+    visiveis = do_objetivo
+    for coluna_tela, (rotulo, coluna, chave) in zip(st.columns(3), FILTROS):
+        escolha = coluna_tela.selectbox(rotulo, [TODAS] + sorted(celulas[coluna].unique()), key=chave)
+        if escolha != TODAS:
+            visiveis = visiveis[visiveis[coluna] == escolha]
     if visiveis.empty:
         st.info("Nenhuma célula com esses filtros.")
         return

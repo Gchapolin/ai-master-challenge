@@ -83,17 +83,27 @@ def test_saude_mostra_veredito_e_numeros_do_laudo():
 def test_mapa_filtra_por_plataforma():
     at = abrir("mapa.py")
     assert not at.exception
+    assert at.selectbox(key="plataforma").value == "Todas"
     assert len(at.table[0].value) == 60
 
-    at.multiselect(key="plataformas").set_value(["TikTok"]).run()
+    at.selectbox(key="plataforma").set_value("TikTok").run()
 
     assert len(at.table[0].value) == 12  # 1 plataforma x 3 categorias x 4 formatos
 
 
-def test_mapa_sem_celulas_mostra_aviso():
+def test_mapa_sem_celulas_mostra_aviso(tmp_path, monkeypatch):
+    # Só duas células: TikTok em beauty e YouTube em tech. TikTok em tech não existe.
+    pd.DataFrame(
+        {"objetivo": ["engajamento"] * 2, "platform": ["TikTok", "YouTube"], "content_category": ["beauty", "tech"],
+         "content_type": ["video", "text"], "n": [100, 100], "media": [0.2, 0.2], "media_resto": [0.2, 0.2],
+         "lift": [0.0, 0.0], "ic_inf": [-0.01, -0.01], "ic_sup": [0.01, 0.01], "p": [0.9, 0.9],
+         "p_ajustado": [0.9, 0.9], "classe": ["ruído", "ruído"]}
+    ).to_csv(tmp_path / "celulas.csv", index=False)
+    monkeypatch.setenv("RADAR_RESUMOS", str(tmp_path))
     at = abrir("mapa.py")
 
-    at.multiselect(key="plataformas").set_value([]).run()
+    at.selectbox(key="plataforma").set_value("TikTok").run()
+    at.selectbox(key="categoria").set_value("tech").run()
 
     assert not at.exception
     assert any("Nenhuma célula com esses filtros." in i.value for i in at.info)

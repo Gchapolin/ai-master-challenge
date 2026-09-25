@@ -34,15 +34,13 @@ div[data-testid="stMetricValue"] > div {{ white-space: normal !important; overfl
 .stButton > button[kind="primary"] {{ background: {DOURADO}; border-color: {DOURADO}; color: {AZUL}; font-weight: 800; }}
 .stApp .radar-rodape {{ color: {DOURADO_ESCURO}; font-size: 0.8rem; text-align: center; margin: 40px 0 8px; }}
 /* Controles com fundo branco e texto azul, qualquer que seja o tema (claro ou escuro) do sistema */
-.stApp [data-testid="stSelectbox"] [role="group"], .stApp [data-testid="stMultiSelect"] [role="group"],
+.stApp [data-testid="stSelectbox"] [role="group"],
 .stApp [data-testid="stNumberInputContainer"], .stApp [data-testid="stNumberInputField"],
 .stApp [data-testid="stNumberInputStepDown"], .stApp [data-testid="stNumberInputStepUp"] {{
   background-color: #FFFFFF !important; color: {AZUL} !important; }}
-.stApp [data-testid="stSelectbox"] input, .stApp [data-testid="stSelectbox"] span, .stApp [data-testid="stSelectbox"] svg,
-.stApp [data-testid="stMultiSelect"] input {{ color: {AZUL} !important; }}
-.stApp [data-testid="stMultiSelect"] [role="group"] svg {{ color: #52514E !important; }}
-.stApp [data-testid="stMultiSelect"] span[data-tag] {{ background-color: {AZUL} !important; }}
-.stApp [data-testid="stMultiSelect"] span[data-tag] * {{ color: {OFF_WHITE} !important; }}
+.stApp [data-testid="stSelectbox"] input, .stApp [data-testid="stSelectbox"] span, .stApp [data-testid="stSelectbox"] svg {{ color: {AZUL} !important; }}
+.stApp [data-testid="stSelectbox"] [role="group"]:focus-within,
+.stApp [data-testid="stNumberInputContainer"]:focus-within {{ border-color: {AZUL} !important; }}
 [role="listbox"] {{ background-color: #FFFFFF !important; }}
 [role="listbox"] [role="option"], [role="listbox"] [role="option"] * {{ color: {AZUL} !important; }}
 /* Azul no lugar do vermelho padrão do Streamlit */
