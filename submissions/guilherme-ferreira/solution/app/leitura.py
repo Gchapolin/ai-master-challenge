@@ -9,7 +9,7 @@ COLUNAS = {
     "laudo.csv": ["chave", "valor"],
     "simulacao.csv": ["efeito", "rodadas", "taxa_sinal", "taxa_abaixo_do_limiar", "lift_medido_medio", "falsos_positivos_por_rodada"],
     "celulas.csv": ["objetivo", "platform", "content_category", "content_type", "n", "lift", "ic_inf", "ic_sup", "p_ajustado", "classe"],
-    "semanas.csv": ["semana", "dias", "posts", "patrocinados", "sem_fit", "implicita", "so_hashtag", "um_post_so", "algum_problema"],
+    "semanas.csv": ["semana", "dias", "ultimo_post", "posts", "patrocinados", "sem_fit", "implicita", "so_hashtag", "um_post_so", "algum_problema"],
     "semanas_grupos.csv": ["semana", "dimensao", "valor", "n", "media", "var"],
 }
 COMO_GERAR = "Rode `python solution/gerar_resumos.py` na pasta da submissão."
@@ -31,8 +31,9 @@ def ler_resumo(nome, pasta=None):
     faltando = [coluna for coluna in COLUNAS[nome] if coluna not in tabela.columns]
     if faltando:
         raise ResumoAusente(f"O resumo {nome} não tem as colunas {', '.join(faltando)}. {COMO_GERAR}")
-    if "semana" in tabela.columns:
-        tabela["semana"] = pd.to_datetime(tabela["semana"])
+    for coluna in ("semana", "ultimo_post"):
+        if coluna in tabela.columns:
+            tabela[coluna] = pd.to_datetime(tabela[coluna])
     return tabela
 
 

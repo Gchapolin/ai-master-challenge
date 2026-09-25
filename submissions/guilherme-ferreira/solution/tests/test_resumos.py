@@ -35,12 +35,12 @@ def test_resumo_semanas_conta_por_semana(posts_minimos):
     tabela = resumo_semanas(posts_minimos).set_index("semana")
 
     assert tabela.loc[pd.Timestamp("2025-05-19")].to_dict() == {
-        "dias": 4, "posts": 4, "patrocinados": 2, "sem_fit": 1, "implicita": 1,
-        "so_hashtag": 1, "um_post_so": 0, "algum_problema": 1,
+        "dias": 4, "ultimo_post": pd.Timestamp("2025-05-25 18:00"), "posts": 4, "patrocinados": 2, "sem_fit": 1,
+        "implicita": 1, "so_hashtag": 1, "um_post_so": 0, "algum_problema": 1,
     }
     assert tabela.loc[pd.Timestamp("2025-05-26")].to_dict() == {
-        "dias": 2, "posts": 2, "patrocinados": 1, "sem_fit": 0, "implicita": 1,
-        "so_hashtag": 0, "um_post_so": 1, "algum_problema": 1,
+        "dias": 2, "ultimo_post": pd.Timestamp("2025-05-28 08:00"), "posts": 2, "patrocinados": 1, "sem_fit": 0,
+        "implicita": 1, "so_hashtag": 0, "um_post_so": 1, "algum_problema": 1,
     }
 
 

@@ -73,9 +73,12 @@ def main():
 
     st.subheader("Top 3 e bottom 3 da semana")
     destaques = destaques_semana(grupos, semana)
-    st.markdown(f"**{veredito(destaques)}**")
-    st.table(tabela_destaques(destaques).style.hide(axis="index"))
-    st.caption("Cada grupo é comparado com os outros posts da mesma semana. " + tema.LEGENDA_CLASSES)
+    if destaques.empty:
+        st.info("Não há grupos para comparar nesta semana.")
+    else:
+        st.markdown(f"**{veredito(destaques)}**")
+        st.table(tabela_destaques(destaques).style.hide(axis="index"))
+        st.caption("Cada grupo é comparado com os outros posts da mesma semana. " + tema.LEGENDA_CLASSES)
 
     st.subheader("Esta semana")
     st.markdown(QUICK_WINS)

@@ -7,10 +7,15 @@ from src.formato import percentual_br
 TOTAL = "total"
 
 
+COLUNAS_DESTAQUES = ["dimensao", "valor", "n", "media", "media_resto", "lift", "ic_inf", "ic_sup", "p", "p_ajustado", "classe", "posicao"]
+
+
 def semana_padrao(semanas):
-    """A semana mais recente com os 7 dias; sem nenhuma completa, a mais recente."""
-    completas = semanas[semanas["dias"] == 7]
-    return pd.Timestamp((completas if len(completas) else semanas)["semana"].max())
+    """A semana mais recente cujo domingo não passa da data do último post; se nenhuma terminou, a mais recente."""
+    ultimo_dia = pd.to_datetime(semanas["ultimo_post"]).max().normalize()
+    inicios = pd.to_datetime(semanas["semana"])
+    terminadas = inicios[inicios + pd.Timedelta(days=6) <= ultimo_dia]
+    return pd.Timestamp((terminadas if len(terminadas) else inicios).max())
 
 
 def indicadores_semana(semanas, semana, custo_por_post):
@@ -39,12 +44,19 @@ def destaques_semana(semanas_grupos, semana, quantos=3):
     Cada grupo é comparado com os outros posts da mesma semana, com a correção entre todos os grupos."""
     da_semana = semanas_grupos[pd.to_datetime(semanas_grupos["semana"]) == pd.Timestamp(semana)]
     total = da_semana[da_semana["dimensao"] == TOTAL].iloc[0]
-    grupos = da_semana[da_semana["dimensao"] != TOTAL][["dimensao", "valor", "n", "media", "var"]].reset_index(drop=True)
-    tabela = comparar_com_resto(grupos, total["n"], total["media"], total["var"]).sort_values("lift", ascending=False)
-    return pd.concat(
-        [tabela.head(quantos).assign(posicao="acima"), tabela.tail(quantos).iloc[::-1].assign(posicao="abaixo")],
-        ignore_index=True,
+    # Um grupo que é a semana inteira não tem com quem se comparar.
+    comparaveis = (da_semana["dimensao"] != TOTAL) & (da_semana["n"] < total["n"])
+    grupos = da_semana[comparaveis][["dimensao", "valor", "n", "media", "var"]].reset_index(drop=True)
+    if grupos.empty:
+        return pd.DataFrame(columns=COLUNAS_DESTAQUES)
+    tabela = (
+        comparar_com_resto(grupos, total["n"], total["media"], total["var"])
+        .dropna(subset=["lift"])
+        .sort_values("lift", ascending=False)
     )
+    acima = tabela.head(quantos)
+    abaixo = tabela.iloc[len(acima):].tail(quantos).iloc[::-1]  # nunca repete um grupo de cima
+    return pd.concat([acima.assign(posicao="acima"), abaixo.assign(posicao="abaixo")], ignore_index=True)
 
 
 def veredito(destaques):

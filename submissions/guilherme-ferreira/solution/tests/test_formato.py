@@ -28,3 +28,8 @@ def test_numero_br_usa_ponto_no_milhar_e_virgula_no_decimal(valor, casas, espera
 )
 def test_percentual_br(fracao, casas, sinal, esperado):
     assert percentual_br(fracao, casas, sinal) == esperado
+
+
+def test_formato_mostra_traco_quando_nao_ha_numero():
+    assert numero_br(float("nan")) == "—"
+    assert percentual_br(float("nan"), 1, sinal=True) == "—"

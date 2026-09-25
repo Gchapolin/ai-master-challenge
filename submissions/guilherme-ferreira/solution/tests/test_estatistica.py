@@ -100,3 +100,12 @@ def test_efeito_estratificado_compara_so_dentro_do_mesmo_estrato():
     assert resultado["diferenca"] == pytest.approx(0.02, abs=0.002)
     assert resultado["ic_inf"] < resultado["lift"] < resultado["ic_sup"]
     assert (resultado["n_tratados"], resultado["n_controle"]) == (500, 500)
+
+
+def test_classificar_nao_testa_linha_sem_p():
+    # Grupo que é quase a semana inteira: não sobra resto para comparar e o p fica indefinido.
+    tabela = pd.DataFrame({"n": [40, 100], "lift": [np.nan, 0.20], "p": [np.nan, 0.001]})
+
+    resultado = classificar(tabela)
+
+    assert resultado["classe"].tolist() == ["poucos posts", "sinal"]

@@ -9,6 +9,7 @@ def semanas_exemplo():
         {
             "semana": pd.to_datetime(["2025-05-12", "2025-05-19", "2025-05-26"]),
             "dias": [7, 7, 3],
+            "ultimo_post": pd.to_datetime(["2025-05-18 20:00", "2025-05-25 22:00", "2025-05-28 11:00"]),
             "posts": [500, 400, 200],
             "patrocinados": [200, 100, 0],
             "sem_fit": [120, 60, 0],
@@ -35,12 +36,17 @@ def grupos_da_semana(semente=2):
     return pd.concat([grupos, total], ignore_index=True).assign(semana=pd.Timestamp("2025-05-19"))
 
 
-def test_semana_padrao_e_a_ultima_completa():
+def test_semana_padrao_e_a_ultima_que_ja_terminou():
     assert semana_padrao(semanas_exemplo()) == pd.Timestamp("2025-05-19")
 
 
-def test_semana_padrao_sem_semana_completa_usa_a_ultima():
-    assert semana_padrao(semanas_exemplo().assign(dias=3)) == pd.Timestamp("2025-05-26")
+def test_semana_padrao_segue_a_data_do_ultimo_post_mesmo_com_pouca_postagem():
+    # Três dias com post por semana: nenhuma semana tem os 7 dias, mas a de 19/05 já terminou (último post em 28/05).
+    assert semana_padrao(semanas_exemplo().assign(dias=3)) == pd.Timestamp("2025-05-19")
+
+
+def test_semana_padrao_sem_semana_terminada_usa_a_mais_recente():
+    assert semana_padrao(semanas_exemplo().iloc[[2]]) == pd.Timestamp("2025-05-26")
 
 
 def test_indicadores_semana_divide_problemas_pelos_patrocinados():
@@ -70,7 +76,33 @@ def test_destaques_poem_o_grupo_com_efeito_no_topo():
 def test_destaques_marcam_grupo_pequeno_como_poucos_posts():
     destaques = destaques_semana(grupos_da_semana(), pd.Timestamp("2025-05-19"), quantos=4)
 
-    assert destaques.set_index("valor").loc["D", "classe"].tolist()[0] == "poucos posts"
+    assert destaques.set_index("valor").loc["D", "classe"] == "poucos posts"
+
+
+def test_destaques_nao_repetem_grupo_em_cima_e_embaixo():
+    destaques = destaques_semana(grupos_da_semana(), pd.Timestamp("2025-05-19"), quantos=3)
+
+    assert not destaques.duplicated(["dimensao", "valor"]).any()
+    assert len(destaques) == 4  # 4 grupos: 3 em cima e o que sobra embaixo
+
+
+def test_destaques_ignoram_grupo_que_e_a_semana_inteira():
+    grupos = grupos_da_semana()
+    total = grupos[grupos["dimensao"] == "total"].iloc[0]
+    semana_inteira = pd.DataFrame(
+        {"dimensao": ["content_type"], "valor": ["video"], "n": [total["n"]], "media": [total["media"]],
+         "var": [total["var"]], "semana": [total["semana"]]}
+    )
+
+    destaques = destaques_semana(pd.concat([grupos, semana_inteira], ignore_index=True), pd.Timestamp("2025-05-19"))
+
+    assert "video" not in set(destaques["valor"])
+
+
+def test_destaques_sem_grupos_para_comparar_voltam_vazios():
+    so_total = grupos_da_semana().query("dimensao == 'total'")
+
+    assert destaques_semana(so_total, pd.Timestamp("2025-05-19")).empty
 
 
 def test_veredito_sem_sinal():

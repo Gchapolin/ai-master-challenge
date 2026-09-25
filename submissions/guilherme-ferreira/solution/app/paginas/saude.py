@@ -45,7 +45,7 @@ def main():
         )
         cartao(
             "Teste 3", "A operação escolhe com critério?",
-            f"Patrocinador combina com o conteúdo em {percentual_br(laudo['fit'], 1)} dos posts",
+            f"Patrocinador combina com o conteúdo em {percentual_br(laudo['fit'], 1)} dos posts patrocinados",
             f"Igual ao que daria um sorteio ({percentual_br(laudo['fit_sorteio'], 1)}). "
             f"{percentual_br(laudo['patrocinadores_um_post'], 1)} dos patrocinadores aparecem num post só. "
             f"Formatos em proporção redonda: vídeo {percentual_br(laudo['formato_video'], 1)}, "

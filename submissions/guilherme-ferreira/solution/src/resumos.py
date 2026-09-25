@@ -41,15 +41,18 @@ def marcar_problemas(df):
 
 
 def resumo_semanas(df):
-    """Uma linha por semana: dias com post, posts, patrocinados e quantos patrocinados têm cada problema."""
+    """Uma linha por semana: dias com post, data do último post, posts, patrocinados e quantos
+    patrocinados têm cada problema."""
     base = marcar_problemas(df).astype(int).assign(
         semana=semana(df["post_date"]),
         dia=df["post_date"].dt.normalize(),
+        data=df["post_date"],
         posts=1,
         patrocinados=df["is_sponsored"].astype(int),
     )
     tabela = base.groupby("semana").agg(
         dias=("dia", "nunique"),
+        ultimo_post=("data", "max"),
         posts=("posts", "sum"),
         patrocinados=("patrocinados", "sum"),
         sem_fit=("sem_fit", "sum"),

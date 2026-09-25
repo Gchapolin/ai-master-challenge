@@ -76,6 +76,7 @@ def test_saude_mostra_veredito_e_numeros_do_laudo():
     assert "Resultado: sem sinal. Operação: sem critério." in textos
     assert all(f"Teste {i}" in textos for i in range(1, 5))
     assert percentual_br(laudo["fit"], 1) in textos
+    assert f"em {percentual_br(laudo['fit'], 1)} dos posts patrocinados" in textos
     assert percentual_br(laudo["patrocinadores_um_post"], 1) in textos
 
 
@@ -151,3 +152,35 @@ def test_radar_navega_ate_a_calculadora():
 
     assert not at.exception
     assert any(m.label == "Posts por grupo" for m in at.metric)
+
+
+def test_brief_semana_sem_grupos_para_comparar(tmp_path, monkeypatch):
+    # 40 posts, todos no Instagram, em vídeo e em beauty: nenhum grupo tem com quem se comparar.
+    semana = "2025-05-19"
+    pd.DataFrame({"semana": [semana], "dias": [7], "ultimo_post": ["2025-05-25 20:00"], "posts": [40], "patrocinados": [0],
+                  "sem_fit": [0], "implicita": [0], "so_hashtag": [0], "um_post_so": [0], "algum_problema": [0]}
+                 ).to_csv(tmp_path / "semanas.csv", index=False)
+    pd.DataFrame({"semana": [semana] * 4, "dimensao": ["platform", "content_type", "content_category", "total"],
+                  "valor": ["Instagram", "video", "beauty", "total"], "n": [40] * 4, "media": [0.2] * 4, "var": [0.0001] * 4}
+                 ).to_csv(tmp_path / "semanas_grupos.csv", index=False)
+    monkeypatch.setenv("RADAR_RESUMOS", str(tmp_path))
+
+    at = abrir("brief.py")
+
+    assert not at.exception
+    assert any("Não há grupos para comparar" in i.value for i in at.info)
+
+
+def test_mapa_com_intervalos_indefinidos_nao_quebra(tmp_path, monkeypatch):
+    pd.DataFrame(
+        {"objetivo": ["engajamento"] * 2, "platform": ["TikTok", "YouTube"], "content_category": ["beauty"] * 2,
+         "content_type": ["video"] * 2, "n": [1, 1], "media": [0.2, 0.2], "media_resto": [0.2, 0.2], "lift": [0.0, 0.0],
+         "ic_inf": [float("nan")] * 2, "ic_sup": [float("nan")] * 2, "p": [float("nan")] * 2,
+         "p_ajustado": [float("nan")] * 2, "classe": ["poucos posts"] * 2}
+    ).to_csv(tmp_path / "celulas.csv", index=False)
+    monkeypatch.setenv("RADAR_RESUMOS", str(tmp_path))
+
+    at = abrir("mapa.py")
+
+    assert not at.exception
+    assert len(at.table[0].value) == 2

@@ -40,7 +40,8 @@ def preparar(celulas):
 
 
 def grafico(dados):
-    limite = max(12, math.ceil(max(dados["fim"].abs().max(), dados["inicio"].abs().max())) + 1)
+    extremo = pd.concat([dados["inicio"], dados["fim"], dados["diferenca"]]).abs().max()
+    limite = 12 if pd.isna(extremo) else max(12, math.ceil(extremo) + 1)
     x = alt.X(
         "inicio:Q", title="diferença contra o resto dos posts", scale=alt.Scale(domain=[-limite, limite]),
         axis=alt.Axis(labelExpr="datum.value + '%'", grid=False),

@@ -44,10 +44,11 @@ def comparar(grupo, base, confianca=0.95) -> dict:
 def classificar(tabela, limiar=LIMIAR, n_min=N_MINIMO, alfa=ALFA) -> pd.DataFrame:
     """Aplica a regra de sinal a uma tabela com as colunas n, lift e p.
 
-    A correção de Benjamini-Hochberg é feita só entre as linhas com n >= n_min, que são
-    as comparações de fato testadas."""
+    A correção de Benjamini-Hochberg é feita só entre as linhas com n >= n_min e p definido,
+    que são as comparações de fato testadas. Sem p (por exemplo, quando não sobra resto para
+    comparar), a linha fica como "poucos posts"."""
     resultado = tabela.copy()
-    testada = resultado["n"] >= n_min
+    testada = (resultado["n"] >= n_min) & resultado["p"].notna()
     resultado["p_ajustado"] = np.nan
     if testada.any():
         resultado.loc[testada, "p_ajustado"] = stats.false_discovery_control(
