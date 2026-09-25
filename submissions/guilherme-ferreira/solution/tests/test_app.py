@@ -95,3 +95,41 @@ def test_mapa_sem_celulas_mostra_aviso():
 
     assert not at.exception
     assert any("Nenhuma célula com esses filtros." in i.value for i in at.info)
+
+
+def metrica(at, rotulo):
+    return next(m.value for m in at.metric if m.label == rotulo)
+
+
+def test_calculadora_padrao_e_20_por_cento_com_cv_1():
+    at = abrir("calculadora.py")
+
+    assert not at.exception
+    assert metrica(at, "Posts por grupo") == "393"
+    assert metrica(at, "Semanas") == "4"
+
+
+def test_calculadora_responde_as_tres_perguntas():
+    at = abrir("calculadora.py")
+
+    at.radio(key="efeito").set_value("10%").run()
+    at.number_input(key="posts_semana").set_value(100).run()
+
+    assert metrica(at, "Posts por grupo") == "1.570"
+    assert metrica(at, "Semanas") == "32"  # 2 x 1.570 / 100 = 31,4, arredondado para cima
+
+
+def test_calculadora_outro_efeito_tem_minimo_de_1():
+    at = abrir("calculadora.py")
+
+    at.radio(key="efeito").set_value("Outro").run()
+
+    assert at.number_input(key="efeito_outro").min == 1
+
+
+def test_calculadora_mostra_a_hipotese_escolhida():
+    at = abrir("calculadora.py")
+
+    at.radio(key="hipotese").set_value("H1 · fit").run()
+
+    assert any("60,1%" in m.value for m in at.markdown)
