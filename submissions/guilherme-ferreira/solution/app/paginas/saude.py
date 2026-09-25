@@ -15,7 +15,7 @@ from src.formato import numero_br, percentual_br  # noqa: E402
 
 
 def cartao(titulo, pergunta, numero, leitura):
-    with st.container(border=True):
+    with st.container(border=True, key=f"cartao_{titulo.split()[-1]}"):
         st.markdown(f"**{titulo}.** {pergunta}")
         st.markdown(f"### {numero}")
         st.markdown(leitura)
@@ -69,18 +69,16 @@ def main():
         "Numa cópia do dado, plantamos efeitos conhecidos (+15%, +10% e +3%) em células sorteadas e rodamos o mesmo "
         "método, 200 vezes para cada efeito. Nenhum número das outras telas vem dessa cópia."
     )
-    st.dataframe(
-        pd.DataFrame(
-            {
-                "Efeito plantado": simulacao["efeito"].map(lambda v: percentual_br(v, 0, sinal=True)),
-                "Vira sinal": simulacao["taxa_sinal"].map(lambda v: percentual_br(v, 1)),
-                "Percebido, abaixo do limiar": simulacao["taxa_abaixo_do_limiar"].map(lambda v: percentual_br(v, 1)),
-                "Efeito medido": simulacao["lift_medido_medio"].map(lambda v: percentual_br(v, 2, sinal=True)),
-                "Falsos sinais por rodada": simulacao["falsos_positivos_por_rodada"].map(lambda v: numero_br(v, 2)),
-            }
-        ),
-        hide_index=True,
+    tabela = pd.DataFrame(
+        {
+            "Efeito plantado": simulacao["efeito"].map(lambda v: percentual_br(v, 0, sinal=True)),
+            "Vira sinal": simulacao["taxa_sinal"].map(lambda v: percentual_br(v, 1)),
+            "Percebido, abaixo do limiar": simulacao["taxa_abaixo_do_limiar"].map(lambda v: percentual_br(v, 1)),
+            "Efeito medido": simulacao["lift_medido_medio"].map(lambda v: percentual_br(v, 2, sinal=True)),
+            "Falsos sinais por rodada": simulacao["falsos_positivos_por_rodada"].map(lambda v: numero_br(v, 2)),
+        }
     )
+    st.table(tabela.style.hide(axis="index"))
     st.caption("+10% é a fronteira: a regra pede diferença acima de 10%, então esse efeito vira sinal em cerca de metade das rodadas.")
 
 

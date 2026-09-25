@@ -59,25 +59,23 @@ def main():
     )
 
     ind = indicadores_semana(semanas, semana, custo)
-    colunas = st.columns(6)
-    colunas[0].metric("Posts", numero_br(ind["posts"]), border=True)
-    colunas[1].metric("Patrocinados", percentual_br(ind["patrocinados"], 1), border=True)
-    colunas[2].metric("Sem fit", percentual_br(ind["sem_fit"], 1), border=True, help="Entre os patrocinados da semana.")
-    colunas[3].metric("Divulgação implícita", percentual_br(ind["implicita"], 1), border=True, help="Entre os patrocinados da semana.")
-    colunas[4].metric("Parceria de um post só", percentual_br(ind["um_post_so"], 1), border=True, help="Patrocinador que aparece uma vez em todo o histórico.")
-    colunas[5].metric(
+    volume = st.columns(3)
+    volume[0].metric("Posts", numero_br(ind["posts"]), border=True)
+    volume[1].metric("Patrocinados", percentual_br(ind["patrocinados"], 1), border=True)
+    volume[2].metric(
         "Gasto nas práticas a parar", "US$ " + numero_br(ind["gasto"]), border=True,
         help=f"{numero_br(ind['posts_com_problema'])} posts patrocinados com algum problema, vezes o custo por post.",
     )
+    problemas = st.columns(3)
+    problemas[0].metric("Sem fit", percentual_br(ind["sem_fit"], 1), border=True, help="Entre os patrocinados da semana.")
+    problemas[1].metric("Divulgação implícita", percentual_br(ind["implicita"], 1), border=True, help="Entre os patrocinados da semana.")
+    problemas[2].metric("Parceria de um post só", percentual_br(ind["um_post_so"], 1), border=True, help="Patrocinador que aparece uma vez em todo o histórico.")
 
     st.subheader("Top 3 e bottom 3 da semana")
     destaques = destaques_semana(grupos, semana)
     st.markdown(f"**{veredito(destaques)}**")
-    st.dataframe(tabela_destaques(destaques), hide_index=True)
-    st.caption(
-        "Cada grupo é comparado com os outros posts da mesma semana. Só é sinal a diferença acima de 10%, "
-        "confiável depois da correção e com pelo menos 30 posts."
-    )
+    st.table(tabela_destaques(destaques).style.hide(axis="index"))
+    st.caption("Cada grupo é comparado com os outros posts da mesma semana. " + tema.LEGENDA_CLASSES)
 
     st.subheader("Esta semana")
     st.markdown(QUICK_WINS)

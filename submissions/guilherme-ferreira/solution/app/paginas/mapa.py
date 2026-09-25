@@ -63,7 +63,7 @@ def grafico(dados):
     return (
         (faixa + limites + intervalos + pontos)
         .properties(height=max(220, 18 * len(dados)))
-        .configure(font="Manrope")
+        .configure(font="Manrope", background="#FFFFFF")
         .configure_axis(labelColor=tema.AZUL, titleColor=tema.AZUL, domainColor="#C3C2B7", tickColor="#C3C2B7")
         .configure_view(stroke=None)
     )
@@ -103,17 +103,15 @@ def main():
         return
 
     dados = preparar(visiveis)
-    st.altair_chart(grafico(dados), width="stretch")
-    st.dataframe(
-        dados[["celula", "posts_txt", "diferenca_txt", "intervalo_txt", "classe"]].rename(
-            columns={
-                "celula": "Célula", "posts_txt": "Posts", "diferenca_txt": "Diferença",
-                "intervalo_txt": "Intervalo de 95%", "classe": "Classe",
-            }
-        ),
-        hide_index=True,
-    )
-    st.caption("Faixa dourada: de -10% a +10%. Dentro dela, nenhuma diferença conta como sinal.")
+    st.altair_chart(grafico(dados), width="stretch", theme=None)
+    st.caption("Faixa dourada: de -10% a +10%. Dentro dela, nenhuma diferença conta como sinal. " + tema.LEGENDA_CLASSES)
+    tabela = dados[["celula", "posts_txt", "diferenca_txt", "intervalo_txt", "classe"]].rename(
+        columns={
+            "celula": "Célula", "posts_txt": "Posts", "diferenca_txt": "Diferença",
+            "intervalo_txt": "Intervalo de 95%", "classe": "Classe",
+        }
+    ).reset_index(drop=True)
+    st.table(tabela.style.hide(axis="index"))
 
 
 main()

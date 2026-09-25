@@ -5,6 +5,7 @@ import pytest
 from streamlit.testing.v1 import AppTest
 
 from app.leitura import ResumoAusente, ler_resumo
+from app.tema import RODAPE
 from src.formato import percentual_br
 
 PASTA_APP = Path(__file__).resolve().parents[1] / "app"
@@ -81,11 +82,11 @@ def test_saude_mostra_veredito_e_numeros_do_laudo():
 def test_mapa_filtra_por_plataforma():
     at = abrir("mapa.py")
     assert not at.exception
-    assert len(at.dataframe[0].value) == 60
+    assert len(at.table[0].value) == 60
 
     at.multiselect(key="plataformas").set_value(["TikTok"]).run()
 
-    assert len(at.dataframe[0].value) == 12  # 1 plataforma x 3 categorias x 4 formatos
+    assert len(at.table[0].value) == 12  # 1 plataforma x 3 categorias x 4 formatos
 
 
 def test_mapa_sem_celulas_mostra_aviso():
@@ -133,3 +134,20 @@ def test_calculadora_mostra_a_hipotese_escolhida():
     at.radio(key="hipotese").set_value("H1 · fit").run()
 
     assert any("60,1%" in m.value for m in at.markdown)
+
+
+def test_radar_abre_no_brief_com_rodape():
+    at = AppTest.from_file(str(PASTA_APP / "radar.py"), default_timeout=30).run()
+
+    assert not at.exception
+    assert any("Brief da" in m.value for m in at.markdown)
+    assert any(RODAPE in m.value for m in at.markdown)
+
+
+def test_radar_navega_ate_a_calculadora():
+    at = AppTest.from_file(str(PASTA_APP / "radar.py"), default_timeout=30).run()
+
+    at.switch_page("paginas/calculadora.py").run()
+
+    assert not at.exception
+    assert any(m.label == "Posts por grupo" for m in at.metric)

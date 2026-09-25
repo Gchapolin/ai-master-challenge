@@ -40,7 +40,7 @@ def main():
     escolha = st.radio("Começar de uma hipótese da estratégia", list(HIPOTESES), horizontal=True, key="hipotese")
     if HIPOTESES[escolha]:
         texto, principal, secundaria, guardrail = HIPOTESES[escolha]
-        with st.container(border=True):
+        with st.container(border=True, key="cartao_hipotese"):
             st.markdown(texto)
             st.markdown(f"**Métrica principal:** {principal}. **Secundária:** {secundaria}. **Não pode piorar:** {guardrail}.")
 
