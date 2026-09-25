@@ -69,3 +69,32 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
 
 **Print.** `evidencias/screenshots/02-laudo_01.png`: minhas respostas sobre a tese, a simulação e o push.
+
+---
+
+## Fase 3 — Análise das perguntas do Head (25/09/2026)
+
+**O que eu queria saber.** O que o arquivo responde, e o que não responde, sobre cada pergunta do Head de Marketing.
+
+**O que pedi.** "Pega os prints e segue pra próxima etapa." O Claude Code organizou os prints das decisões e executou a Fase 3, com os testes de cada função nova escritos antes do código.
+
+**O que a IA respondeu.**
+- Nenhuma das 240 comparações de plataforma, categoria e formato, para quatro objetivos, virou sinal. A maior diferença foi de 0,86%.
+- Patrocinado e orgânico rendem igual (-0,01% de engajamento), mesmo comparando só posts da mesma plataforma, categoria e formato.
+- Público, horário, volume de postagem e duração do vídeo também não mudam nada. Das 970 hashtags testadas, 59 pareceriam "campeãs ou vilãs" sem a correção para muitas comparações; nenhuma sobrevive a ela.
+- A operação patrocina sem critério. O patrocinador combina com o conteúdo em 39,9% dos casos, igual a um sorteio. A parcela patrocinada é a mesma em toda plataforma, categoria e formato.
+- O problema de "parceria de uma vez só", que o meu plano atribuía aos creators, está nos patrocinadores: 90% deles aparecem num post só, enquanto cada creator tem 10 ou 11 posts.
+
+**Como conferi.** Comandos, testes e saídas estão no transcript.
+- 4 testes novos (47 no total), escritos antes do código.
+- Um teste do efeito estratificado falhou. A IA não mexeu no código antes de achar a causa. Comparou a regressão com a conta feita à mão, e as duas bateram. Depois rodou 400 sorteios, e o intervalo de 95% acertou em 93,8% deles. O erro estava no teste, que cobrava acerto num único sorteio, e ele foi reescrito.
+- Outro teste foi ajustado antes de rodar. Com um efeito grande num grupo grande, os outros grupos pareceriam piores só por comparação: é o efeito espelho de comparar cada grupo com todos os outros.
+- Cada número do `02_analise.md` foi conferido contra a saída do notebook. Três frases foram corrigidas.
+
+**O que decidi.**
+- As quatro práticas sem critério entram no "parar de fazer": patrocínio sem fit, divulgação fraca, patrocínio sem foco e parcerias de um post só.
+- O mapa de patrocinador que combina com o conteúdo fica como premissa declarada.
+
+**Em uma frase.** Nenhuma escolha muda o resultado neste arquivo; o que dá para corrigir é o jeito de patrocinar.
+
+**Transcript.** Sessão 1, em `evidencias/transcripts/`.
