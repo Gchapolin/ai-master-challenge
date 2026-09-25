@@ -40,6 +40,7 @@ div[data-testid="stMetricValue"] > div {{ white-space: normal !important; overfl
   background-color: #FFFFFF !important; color: {AZUL} !important; }}
 .stApp [data-testid="stSelectbox"] input, .stApp [data-testid="stSelectbox"] span, .stApp [data-testid="stSelectbox"] svg,
 .stApp [data-testid="stMultiSelect"] input {{ color: {AZUL} !important; }}
+.stApp [data-testid="stMultiSelect"] [role="group"] svg {{ color: #52514E !important; }}
 .stApp [data-testid="stMultiSelect"] span[data-tag] {{ background-color: {AZUL} !important; }}
 .stApp [data-testid="stMultiSelect"] span[data-tag] * {{ color: {OFF_WHITE} !important; }}
 [role="listbox"] {{ background-color: #FFFFFF !important; }}
@@ -49,13 +50,17 @@ div[data-testid="stMetricValue"] > div {{ white-space: normal !important; overfl
 .stApp [data-testid="stSlider"] .efbyxod5 {{ background-image: none !important; background-color: #E1E0D9 !important; }}
 .stApp [data-testid="stSliderThumbValue"], .stApp [data-testid="stSliderThumbValue"] * {{ color: {AZUL} !important; }}
 .stApp [data-testid="stSliderTickBar"], .stApp [data-testid="stSliderTickBar"] * {{ color: #52514E !important; }}
-.stApp [data-testid="stRadioOption"] > div > div:first-child {{ border-color: {AZUL} !important; }}
+.stApp [data-testid="stRadioOption"] > div > div:first-child {{ border: 1px solid {AZUL} !important; }}
+.stApp [data-testid="stRadioOption"]:not([data-selected="true"]) > div > div:first-child {{ background-color: #FFFFFF !important; }}
+.stApp [data-testid="stTooltipIcon"] svg {{ stroke: #52514E !important; color: #52514E !important; }}
 .stApp [data-testid="stRadioOption"][data-selected="true"] > div > div:first-child {{ background-color: {AZUL} !important; }}
 .stApp [data-testid="stRadioOption"] > div > div:first-child > div {{ background-color: #FFFFFF !important; }}
 /* Textos auxiliares */
 .stApp [data-testid="stMetricLabel"], .stApp [data-testid="stMetricLabel"] * {{ color: {AZUL} !important; }}
 .stApp [data-testid="stCaptionContainer"], .stApp [data-testid="stCaptionContainer"] * {{ color: #52514E !important; }}
+.stApp [data-testid="stCaptionContainer"] {{ opacity: 1 !important; }}
 /* Tabelas */
+.stApp [data-testid="stTable"] {{ overflow-x: auto !important; }}
 .stApp [data-testid="stTable"] table {{ background: #FFFFFF; color: {AZUL}; border-collapse: collapse; width: 100%; }}
 .stApp [data-testid="stTable"] th {{ background: {AZUL}; font-weight: 600; }}
 .stApp [data-testid="stTable"] th, .stApp [data-testid="stTable"] th * {{ color: {OFF_WHITE} !important; }}
