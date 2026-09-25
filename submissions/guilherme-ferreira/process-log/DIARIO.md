@@ -169,7 +169,7 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 - UX do g4business.com, com o logo do G4 e o rodapé "Protótipo de candidato ao AI Master Challenge, sem vínculo oficial com o G4".
 - Dados vindos de resumos gerados por script; as quatro telas; top 3 e bottom 3 por grupo da semana.
 - Execução nesta sessão, com uma revisão final independente.
-- Depois de ver a tela, pedi que os filtros do mapa virassem caixas de seleção ("Todas" ou um valor), no lugar da seleção múltipla. Vazia, a seleção múltipla ficava com texto invisível e borda vermelha.
+- Depois de ver a tela, pedi para trocar a seleção múltipla dos filtros do mapa, que vazia ficava com texto invisível e borda vermelha. Primeiro virou caixa de seleção de um valor só. Depois, para poder marcar mais de um, virou uma caixa que abre com checkboxes e mostra o resumo da escolha ("Todas", "3 de 5").
 
 **Em uma frase.** O Radar leva para a segunda-feira o que a análise mostrou: não mudar o mix por causa de ruído, corrigir o patrocínio e calcular o próximo teste antes de rodá-lo.
 

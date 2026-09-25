@@ -13,7 +13,7 @@ import streamlit as st  # noqa: E402
 
 import tema  # noqa: E402
 from leitura import carregar_resumos  # noqa: E402
-from src.formato import numero_br, percentual_br  # noqa: E402
+from src.formato import numero_br, percentual_br, resumo_selecao  # noqa: E402
 
 OBJETIVOS = {
     "engajamento": "Engajamento (likes, shares e comentários por view)",
@@ -22,8 +22,17 @@ OBJETIVOS = {
     "compartilhamento": "Compartilhamento (shares por view)",
 }
 CLASSES = ["sinal", "abaixo do limiar", "ruído", "poucos posts"]
-TODAS = "Todas"
 FILTROS = [("Plataforma", "platform", "plataforma"), ("Categoria", "content_category", "categoria"), ("Formato", "content_type", "formato")]
+
+
+def filtro_com_checkboxes(coluna_tela, rotulo, valores, prefixo):
+    """Caixa que abre com um checkbox por valor. Devolve os valores marcados (todos, de início)."""
+    marcados = [valor for valor in valores if st.session_state.get(f"{prefixo}_{valor}", True)]
+    coluna_tela.markdown(f'<p class="radar-rotulo">{rotulo}</p>', unsafe_allow_html=True)
+    with coluna_tela.popover(resumo_selecao(marcados, len(valores)), width="stretch"):
+        for valor in valores:
+            st.checkbox(valor, value=True, key=f"{prefixo}_{valor}")
+    return marcados
 
 
 def preparar(celulas):
@@ -89,10 +98,9 @@ def main():
     )
 
     visiveis = do_objetivo
-    for coluna_tela, (rotulo, coluna, chave) in zip(st.columns(3), FILTROS):
-        escolha = coluna_tela.selectbox(rotulo, [TODAS] + sorted(celulas[coluna].unique()), key=chave)
-        if escolha != TODAS:
-            visiveis = visiveis[visiveis[coluna] == escolha]
+    for coluna_tela, (rotulo, coluna, prefixo) in zip(st.columns(3), FILTROS):
+        marcados = filtro_com_checkboxes(coluna_tela, rotulo, sorted(celulas[coluna].unique()), prefixo)
+        visiveis = visiveis[visiveis[coluna].isin(marcados)]
     if visiveis.empty:
         st.info("Nenhuma célula com esses filtros.")
         return

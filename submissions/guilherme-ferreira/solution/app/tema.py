@@ -41,6 +41,22 @@ div[data-testid="stMetricValue"] > div {{ white-space: normal !important; overfl
 .stApp [data-testid="stSelectbox"] input, .stApp [data-testid="stSelectbox"] span, .stApp [data-testid="stSelectbox"] svg {{ color: {AZUL} !important; }}
 .stApp [data-testid="stSelectbox"] [role="group"]:focus-within,
 .stApp [data-testid="stNumberInputContainer"]:focus-within {{ border-color: {AZUL} !important; }}
+/* Filtros do mapa: botão do popover com cara de caixa de seleção */
+.stApp .radar-rotulo {{ font-size: 0.875rem; margin: 0 0 0.25rem; }}
+.stApp [data-testid="stPopoverButton"] {{ background-color: #FFFFFF !important; border: 1px solid #C3C2B7 !important;
+  border-radius: 10px; }}
+.stApp [data-testid="stPopoverButton"]:hover, .stApp [data-testid="stPopoverButton"][aria-expanded="true"] {{
+  border-color: {AZUL} !important; }}
+.stApp [data-testid="stPopoverButton"] > div {{ width: 100%; display: flex; justify-content: space-between; }}
+.stApp [data-testid="stPopoverButton"] > div > div:first-child {{ flex: 1; justify-content: flex-start !important; text-align: left; }}
+.stApp [data-testid="stPopoverButton"] * {{ color: {AZUL} !important; }}
+/* O painel do popover fica fora do .stApp */
+[data-testid="stPopoverBody"] {{ background-color: #FFFFFF !important; border: 1px solid #C3C2B7 !important; }}
+[data-testid="stPopoverBody"] p {{ color: {AZUL} !important; font-family: 'Manrope', sans-serif; }}
+[data-testid="stPopoverBody"] [data-testid="stCheckbox"] label > span + div {{ background-color: #FFFFFF !important;
+  border: 1px solid {AZUL} !important; }}
+[data-testid="stPopoverBody"] [data-testid="stCheckbox"][data-selected="true"] label > span + div {{
+  background-color: {AZUL} !important; }}
 [role="listbox"] {{ background-color: #FFFFFF !important; }}
 [role="listbox"] [role="option"], [role="listbox"] [role="option"] * {{ color: {AZUL} !important; }}
 /* Azul no lugar do vermelho padrão do Streamlit */
