@@ -3,7 +3,7 @@ import pandas as pd
 import pytest
 from scipy import stats
 
-from src.estatistica import classificar, comparar
+from src.estatistica import classificar, comparar, efeito_estratificado
 
 
 def test_comparar_mede_lift_sobre_a_media_da_base():
@@ -77,3 +77,26 @@ def test_classificar_so_corrige_entre_celulas_com_posts_suficientes():
     resultado = classificar(tabela)
 
     assert resultado.loc[0, "classe"] == "sinal"
+
+
+def test_efeito_estratificado_compara_so_dentro_do_mesmo_estrato():
+    # Estrato A tem base 0,10 e estrato B, 0,30. O tratamento soma 0,02 nos dois.
+    # 80% dos tratados estão em B e 80% dos controles em A: a comparação direta exagera o efeito.
+    rng = np.random.default_rng(5)
+    partes = []
+    for estrato, base, n_tratados, n_controle in [("A", 0.10, 100, 400), ("B", 0.30, 400, 100)]:
+        partes.append(pd.DataFrame({"estrato": estrato, "tratado": True, "y": base + 0.02 + rng.normal(0, 0.005, n_tratados)}))
+        partes.append(pd.DataFrame({"estrato": estrato, "tratado": False, "y": base + rng.normal(0, 0.005, n_controle)}))
+    df = pd.concat(partes, ignore_index=True)
+    direta = df.loc[df["tratado"], "y"].mean() - df.loc[~df["tratado"], "y"].mean()
+
+    dentro = [g.loc[g["tratado"], "y"].mean() - g.loc[~g["tratado"], "y"].mean() for _, g in df.groupby("estrato")]
+
+    resultado = efeito_estratificado(df, "tratado", ["estrato"], "y")
+
+    assert direta > 0.10
+    # Aqui os dois estratos pesam igual (500 posts, 20% e 80% tratados), então vale a média simples.
+    assert resultado["diferenca"] == pytest.approx(np.mean(dentro), rel=1e-9)
+    assert resultado["diferenca"] == pytest.approx(0.02, abs=0.002)
+    assert resultado["ic_inf"] < resultado["lift"] < resultado["ic_sup"]
+    assert (resultado["n_tratados"], resultado["n_controle"]) == (500, 500)

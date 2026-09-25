@@ -8,6 +8,7 @@ Uma diferença só conta como sinal se as três condições valem juntas:
 """
 import numpy as np
 import pandas as pd
+import statsmodels.formula.api as smf
 from scipy import stats
 
 LIMIAR = 0.10
@@ -60,3 +61,29 @@ def classificar(tabela, limiar=LIMIAR, n_min=N_MINIMO, alfa=ALFA) -> pd.DataFram
         default="ruído",
     )
     return resultado
+
+
+def efeito_estratificado(df, tratamento, estratos, metrica, confianca=0.95) -> dict:
+    """Efeito do tratamento comparando só posts do mesmo estrato: regressão com um efeito
+    fixo por estrato e erro-padrão robusto (HC1). O lift é relativo à média dos não tratados."""
+    dados = pd.DataFrame(
+        {
+            "y": df[metrica].astype("float64"),
+            "t": df[tratamento].astype(int),
+            "estrato": df[estratos].astype(str).agg("|".join, axis=1),
+        }
+    )
+    modelo = smf.ols("y ~ t + C(estrato)", data=dados).fit(cov_type="HC1")
+    diferenca = float(modelo.params["t"])
+    inferior, superior = modelo.conf_int(alpha=1 - confianca).loc["t"]
+    media_controle = float(dados.loc[dados["t"] == 0, "y"].mean())
+    return {
+        "diferenca": diferenca,
+        "media_controle": media_controle,
+        "lift": diferenca / media_controle,
+        "ic_inf": inferior / media_controle,
+        "ic_sup": superior / media_controle,
+        "p": float(modelo.pvalues["t"]),
+        "n_tratados": int(dados["t"].sum()),
+        "n_controle": int((dados["t"] == 0).sum()),
+    }
