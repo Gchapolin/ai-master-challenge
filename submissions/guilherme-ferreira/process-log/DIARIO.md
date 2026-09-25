@@ -27,12 +27,14 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 - Dependências enxutas, com matplotlib no lugar de plotly.
 - E-mail "noreply" do GitHub nos commits, para não expor meu e-mail.
 - Não mexer no `.gitignore` da raiz. Cada arquivo entra pelo nome.
-- Screenshots só da aplicação.
+- Screenshots só da aplicação. Depois mudei: guardei também prints das minhas respostas nas perguntas de decisão.
 - Aprovação manual durante a criação do fork e do ambiente. Depois disso, modo automático.
 
 **Em uma frase.** Preparei o ambiente e descobri que o próprio repositório esconde a pasta de entrega do git, o que pede cuidado em cada commit.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+**Print.** `evidencias/screenshots/00-setup_01.png`: minhas respostas às perguntas sobre modo, fork, dependências e e-mail.
 
 ---
 
@@ -65,3 +67,5 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Em uma frase.** O arquivo não diz o que funciona, e o método provou que diria se houvesse algo a dizer.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+**Print.** `evidencias/screenshots/02-laudo_01.png`: minhas respostas sobre a tese, a simulação e o push.
