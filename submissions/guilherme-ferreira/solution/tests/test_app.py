@@ -5,6 +5,7 @@ import pytest
 from streamlit.testing.v1 import AppTest
 
 from app.leitura import ResumoAusente, ler_resumo
+from src.formato import percentual_br
 
 PASTA_APP = Path(__file__).resolve().parents[1] / "app"
 PAGINAS = PASTA_APP / "paginas"
@@ -62,3 +63,16 @@ def test_brief_sem_resumos_mostra_como_gerar(tmp_path, monkeypatch):
 
     assert not at.exception
     assert any("gerar_resumos.py" in e.value for e in at.error)
+
+
+def test_saude_mostra_veredito_e_numeros_do_laudo():
+    laudo = dict(zip(*ler_resumo("laudo.csv", PASTA_APP / "resumos").T.values))
+
+    at = abrir("saude.py")
+    textos = " ".join(m.value for m in at.markdown)
+
+    assert not at.exception
+    assert "Resultado: sem sinal. Operação: sem critério." in textos
+    assert all(f"Teste {i}" in textos for i in range(1, 5))
+    assert percentual_br(laudo["fit"], 1) in textos
+    assert percentual_br(laudo["patrocinadores_um_post"], 1) in textos
