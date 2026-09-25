@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.celulas import mapa_celulas
+from src.celulas import comparar_com_resto, mapa_celulas
 from src.estatistica import comparar
 
 DIMENSOES = ["plataforma", "formato"]
@@ -44,3 +44,17 @@ def test_mapa_celulas_compara_cada_celula_com_o_resto_dos_posts():
     assert linha["p"] == pytest.approx(esperado["p"], rel=1e-6)
     assert linha["ic_inf"] == pytest.approx(esperado["ic_inf"], rel=1e-6)
     assert linha["ic_sup"] == pytest.approx(esperado["ic_sup"], rel=1e-6)
+
+
+def test_comparar_com_resto_a_partir_de_resumos_bate_com_comparar():
+    df = posts_sinteticos()
+    resumo = df.groupby(DIMENSOES)["engajamento"].agg(n="count", media="mean", var="var").reset_index()
+    valores = df["engajamento"]
+
+    tabela = comparar_com_resto(resumo, len(valores), valores.mean(), valores.var()).set_index(DIMENSOES)
+
+    na_celula = (df["plataforma"] == "B") & (df["formato"] == "x")
+    esperado = comparar(df.loc[na_celula, "engajamento"], df.loc[~na_celula, "engajamento"])
+    assert tabela.loc[("B", "x"), "lift"] == pytest.approx(esperado["lift"], rel=1e-9)
+    assert tabela.loc[("B", "x"), "p"] == pytest.approx(esperado["p"], rel=1e-6)
+    assert tabela.loc[("B", "x"), "ic_sup"] == pytest.approx(esperado["ic_sup"], rel=1e-6)
