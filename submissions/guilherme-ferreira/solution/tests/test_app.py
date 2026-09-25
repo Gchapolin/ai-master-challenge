@@ -76,3 +76,22 @@ def test_saude_mostra_veredito_e_numeros_do_laudo():
     assert all(f"Teste {i}" in textos for i in range(1, 5))
     assert percentual_br(laudo["fit"], 1) in textos
     assert percentual_br(laudo["patrocinadores_um_post"], 1) in textos
+
+
+def test_mapa_filtra_por_plataforma():
+    at = abrir("mapa.py")
+    assert not at.exception
+    assert len(at.dataframe[0].value) == 60
+
+    at.multiselect(key="plataformas").set_value(["TikTok"]).run()
+
+    assert len(at.dataframe[0].value) == 12  # 1 plataforma x 3 categorias x 4 formatos
+
+
+def test_mapa_sem_celulas_mostra_aviso():
+    at = abrir("mapa.py")
+
+    at.multiselect(key="plataformas").set_value([]).run()
+
+    assert not at.exception
+    assert any("Nenhuma célula com esses filtros." in i.value for i in at.info)
