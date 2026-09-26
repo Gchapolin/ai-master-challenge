@@ -125,6 +125,8 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
 
+**Print.** `evidencias/screenshots/03-analise_01.png`: minhas respostas sobre o "parar de fazer" e o mapa de fit.
+
 ---
 
 ## Fase 4 — Estratégia e plano de rastreamento (25/09/2026)
@@ -155,6 +157,8 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Em uma frase.** A estratégia corrige o patrocínio já e usa 30 dias de testes rastreados para gerar o dado que o arquivo não tem.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+**Prints.** `evidencias/screenshots/04-estrategia_01.png` (custo por post) e `04-estrategia_02.png` (ordem dos testes, donos das regras e efeito mínimo).
 
 ---
 
@@ -200,3 +204,5 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Em uma frase.** O Radar leva para a segunda-feira o que a análise mostrou: não mudar o mix por causa de ruído, corrigir o patrocínio e calcular o próximo teste antes de rodá-lo.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
+
+**Prints.** `evidencias/screenshots/05-radar_01_brief.png` a `05-radar_06_brief_celular.png`: as telas do Radar, tiradas pela IA com o Chrome sem janela no fechamento. `05-radar_07_filtro_reprovado.png`: o filtro que reprovei na tela.

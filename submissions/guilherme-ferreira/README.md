@@ -70,7 +70,9 @@ Fontes: sorteio e validação do método no [laudo](solution/01_laudo_do_dado.md
 | Patrocínio espalhado sem foco | cerca de 43% em toda plataforma, categoria e formato; 4.979 dos 5.000 creators |
 | Parcerias de um post só | 90,0% dos 18.005 patrocinadores |
 
-**Radar de Conteúdo.** Quatro telas: o brief de segunda-feira (os 3 melhores e os 3 piores da semana por grupo, sem tratar ruído como descoberta), a saúde do dado, o mapa de sinal e ruído e a calculadora de tamanho de teste. Instruções para rodar abaixo.
+**Radar de Conteúdo.** Quatro telas: o brief de segunda-feira (os 3 melhores e os 3 piores da semana por grupo, sem tratar ruído como descoberta), a saúde do dado, o mapa de sinal e ruído e a calculadora de tamanho de teste. Instruções para rodar abaixo; as outras telas estão em [`evidencias/screenshots/`](process-log/evidencias/screenshots/).
+
+![Brief de segunda do Radar de Conteúdo](process-log/evidencias/screenshots/05-radar_01_brief.png)
 
 ### O que vai além do baseline
 
@@ -104,6 +106,7 @@ Em ordem de prioridade (estratégia, seções 2 a 6):
 - O mapa de fit entre patrocinador e conteúdo é premissa. Outro mapa mudaria o 60,1%, mas não a conclusão: patrocinador e conteúdo são independentes no arquivo (p = 0,70, laudo, teste 3).
 - A conta de amostra supõe coeficiente de variação 1 para as métricas de venda até o rastreamento medir o valor real.
 - O Radar lê resumos do arquivo do desafio. Com dado real no mesmo formato, os resumos são regerados pelo script [`gerar_resumos.py`](solution/gerar_resumos.py).
+- O Radar não foi publicado online. Roda local com um comando (seção abaixo).
 
 ---
 
@@ -136,7 +139,7 @@ python solution/gerar_resumos.py
 
 ## Process Log — Como usei IA
 
-O guia para quem não é da área técnica está em [`process-log/00_COMO_LER.md`](process-log/00_COMO_LER.md). O diário por fase está em [`process-log/DIARIO.md`](process-log/DIARIO.md), e as minhas decisões, escritas por mim, em [`process-log/DECISOES.md`](process-log/DECISOES.md).
+O guia para quem não é da área técnica está em [`process-log/00_COMO_LER.md`](process-log/00_COMO_LER.md). O diário por fase está em [`process-log/DIARIO.md`](process-log/DIARIO.md); as minhas decisões, com as minhas falas citadas, em [`process-log/DECISOES.md`](process-log/DECISOES.md), montado pela IA a partir dos transcripts e revisado por mim; e as skills usadas em cada etapa, com o vault do Obsidian e o motivo de usar grafos, em [`process-log/SKILLS.md`](process-log/SKILLS.md).
 
 ### Ferramentas usadas
 
@@ -148,6 +151,8 @@ O guia para quem não é da área técnica está em [`process-log/00_COMO_LER.md
 | Claude Code em modo seguro, sem nenhum contexto meu | Baseline: o enunciado cru e o CSV |
 | Skills de marketing (influencer-marketing, ab-testing, analytics, social, content-strategy) | Referências da estratégia: faixas de creator, divulgação, formato das hipóteses, nota ICE, tamanho de amostra, plano de rastreamento |
 | Skills de processo (brainstorming, writing-plans, executing-plans, test-driven-development) e dataviz | Desenho, plano e execução do Radar, com os testes escritos antes do código; gráficos |
+| Vault do Obsidian e a skill save-session | Passar o plano e as decisões da sessão de pesquisa para a de execução |
+| Chrome sem janela, controlado por script | Prints das telas do Radar |
 
 ### Workflow
 
@@ -182,7 +187,7 @@ Em cada item, quem pegou o erro: eu, um teste automático, a própria IA ao conf
 
 ## Evidências
 
-- [x] Screenshots das conversas com IA: [`process-log/evidencias/screenshots/`](process-log/evidencias/screenshots/), com as minhas respostas nas perguntas de decisão
+- [x] Screenshots das conversas com IA: [`process-log/evidencias/screenshots/`](process-log/evidencias/screenshots/), com as minhas respostas nas perguntas de decisão, as telas do Radar e o filtro que reprovei
 - [ ] Screen recording do workflow
 - [x] Chat exports: [`process-log/evidencias/transcripts/`](process-log/evidencias/transcripts/), as duas sessões em Markdown legível e em JSONL compactado
 - [x] Git history: um commit por etapa na branch `submission/guilherme-ferreira`

@@ -12,18 +12,21 @@ Uma página para quem não é da área técnica: o que foi feito, em que ordem e
 | Arquivo | O que tem |
 |---|---|
 | [`DIARIO.md`](DIARIO.md) | Uma entrada por fase: o que eu queria saber, o que pedi, o que a IA respondeu, como conferi e o que decidi |
-| [`DECISOES.md`](DECISOES.md) | As decisões humanas, escritas por mim |
+| [`DECISOES.md`](DECISOES.md) | As decisões humanas, com as minhas palavras citadas; montado pela IA a partir dos transcripts e revisado por mim |
+| [`SKILLS.md`](SKILLS.md) | As skills usadas em cada etapa, o vault do Obsidian e por que uso grafos |
 | [`evidencias/baseline/`](evidencias/baseline/) | O enunciado cru num Claude sem contexto, e onde a resposta dele erra |
-| [`evidencias/screenshots/`](evidencias/screenshots/) | Prints das minhas respostas nas perguntas de decisão e das telas do Radar |
+| [`evidencias/screenshots/`](evidencias/screenshots/) | Prints das minhas respostas nas perguntas de decisão, das telas do Radar e do filtro que reprovei |
 | [`evidencias/transcripts/`](evidencias/transcripts/) | As conversas inteiras com o Claude Code |
 
 ## Declarações
 
 - **Pesquisa antes de começar.** Li o repositório, as reviews públicas do avaliador e as submissões anteriores, e usei isso para definir o critério de qualidade. A sessão de pesquisa está nos transcripts.
 - **Modo de aprovação.** A pesquisa rodou em modo automático, só com leitura e planejamento. Na execução, a criação do fork e do ambiente teve aprovação manual; depois, decidi seguir em modo automático, com a IA parando nas decisões. O avaliador já apontou o modo automático como ponto negativo em outra submissão. Preferi declarar.
-- **Screenshots.** A captura automática falhou, porque o macOS não deu ao Claude Code permissão para gravar a tela. Os prints são meus. Os transcripts mostram o resto.
-- **Transcripts.** Cada sessão está em dois formatos: um Markdown legível, com pedidos, respostas e uma linha por ferramenta usada, e o registro completo em JSONL compactado. Um script removeu o meu e-mail, os caminhos da minha pasta pessoal, o meu arquivo de configuração pessoal do Claude (CLAUDE.md global), o ID da organização, a cópia do prompt de sistema do Claude Code e as imagens. O arquivo de instruções do projeto (CLAUDE.md do projeto) ficou, porque mostra as regras que dei à IA. Ele não faz parte da entrega.
+- **Screenshots.** A captura de tela do macOS não funcionou para o Claude Code, porque ele não tem permissão para gravar a tela. Os prints das minhas respostas e do filtro que reprovei são meus, colados no chat e salvos pela IA. Os prints das telas do Radar foram tirados pela IA, a meu pedido, com o Chrome sem janela controlado por um script. Os transcripts mostram o resto.
+- **Transcripts.** Cada sessão está em dois formatos: um Markdown legível, com pedidos, respostas e uma linha por ferramenta usada, e o registro completo em JSONL compactado. Um script removeu o meu e-mail, os caminhos da minha pasta pessoal, o meu arquivo de configuração pessoal do Claude (CLAUDE.md global), o ID da organização, a cópia do prompt de sistema do Claude Code, as imagens, a lista de pastas do meu vault do Obsidian e os nomes dos meus outros projetos. O arquivo de instruções do projeto (CLAUDE.md do projeto) ficou, porque mostra as regras que dei à IA. Ele não faz parte da entrega.
 - **Baseline.** Feito com o mesmo fornecedor de IA (Claude), em modo seguro, sem nenhum contexto meu: só o enunciado e o CSV. A primeira tentativa foi descartada, porque herdou as instruções do projeto.
+- **Decisões.** O plano previa que eu escrevesse o `DECISOES.md`. No fechamento, decidi usar a lista montada pela IA a partir dos transcripts, que revisei. As minhas falas aparecem citadas literalmente.
+- **O que ficou de fora.** A revisão da análise por uma IA de outro fornecedor, prevista no plano como opcional, não foi feita. O Radar não foi publicado online; roda local com um comando (README).
 
 ## Como conferir
 
