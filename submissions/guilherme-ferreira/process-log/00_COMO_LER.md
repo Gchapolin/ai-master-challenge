@@ -5,7 +5,7 @@ Uma página para quem não é da área técnica: o que foi feito, em que ordem e
 ## O que foi feito, em ordem
 
 1. **Pesquisa (sessão 0, cerca de 1 hora).** Pedi à IA para ler o desafio, os PRs dos outros candidatos e as reviews públicas do avaliador, e li a síntese dela. Pedi um plano ao Claude, pedi a outro modelo que achasse as falhas dele e mandei refazer.
-2. **Execução (sessão 1, cerca de 7 horas).** Sete fases: ambiente, laudo do dado, análise, estratégia, Radar e fechamento, mais o baseline, que ficou para o fechamento. A IA fez o trabalho braçal e parou em cada decisão que o plano marcava como minha.
+2. **Execução (sessão 1, cerca de 8 horas no relógio, das quais 1h40 parada por erro de conexão).** Sete fases: ambiente, laudo do dado, análise, estratégia, Radar e fechamento, mais o baseline, que ficou para o fechamento. A IA fez o trabalho braçal e parou em cada decisão que o plano marcava como minha.
 
 ## Onde está cada coisa
 

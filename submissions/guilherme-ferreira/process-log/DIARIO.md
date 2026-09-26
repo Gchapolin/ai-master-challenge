@@ -206,3 +206,41 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
 
 **Prints.** `evidencias/screenshots/05-radar_01_brief.png` a `05-radar_06_brief_celular.png`: as telas do Radar, tiradas pela IA com o Chrome sem janela no fechamento. `05-radar_07_filtro_reprovado.png`: o filtro que reprovei na tela.
+
+---
+
+## Fase 6 — Fechamento (25/09/2026)
+
+**O que eu queria saber.** Se a entrega se sustenta sozinha para quem abrir o PR: cada número rastreável, o processo à mostra, nenhum dado pessoal desnecessário e nenhum arquivo proibido.
+
+**O que pedi.** "Segue pra fase 6." Escolhi o formato dos transcripts, tirar deles o meu CLAUDE.md global e manter o do projeto, e pus no README o LinkedIn do meu CV e o meu portfólio. No fim, pedi para usar o roteiro de decisões montado pela IA como `DECISOES.md`, para a IA tirar os prints e abrir o PR, dispensei a revisão por uma IA de outro fornecedor, mandei tirar dos transcripts a lista de pastas do meu vault e pedi um resumo das skills por etapa.
+
+**O que a IA respondeu.**
+- Um script que exporta cada sessão em Markdown legível e em JSONL compactado. Além do e-mail e dos caminhos da pasta pessoal, ele teve de tirar dado pessoal de lugares que a primeira versão não pegava: o CLAUDE.md global guardado em formato estruturado, o ID da organização, a cópia do prompt de sistema, caminhos usados como chave em registros internos, a lista de pastas do vault, os nomes dos meus outros projetos e os emojis que o próprio Claude Code grava.
+- O README no template oficial, com a fonte de cada número e a comparação com o baseline, o `00_COMO_LER.md` em uma página e o `SKILLS.md`.
+- Os prints das telas do Radar, tirados com o Chrome sem janela, porque a captura de tela do macOS não funciona para o Claude Code. Os prints que eu tinha colado no chat foram recuperados do registro da sessão.
+- Uma revisão final independente, feita por outra instância do Claude, no modelo Opus. Ela conferiu cada número do README contra as fontes e o notebook, e todos batem. Reexecutou o notebook, os resumos e a simulação numa cópia limpa, com saídas idênticas, e rodou os testes sem o CSV. Apontou 20 problemas, quase todos afirmações imprecisas:
+  - o limiar foi fixado antes de comparar os grupos, mas depois do perfil inicial do arquivo;
+  - só o primeiro dos três testes cabe em 30 dias;
+  - o papel do Fable na pesquisa estava subestimado;
+  - três linhas do `DECISOES.md` estavam na seção errada.
+
+**Como conferi.**
+- O script conta o que sobrou de cada dado removido, em cada exportação. Resultado: zero para e-mail, pasta pessoal, CLAUDE.md global, ID da organização, prompt de sistema, lista do vault, nomes dos outros projetos e emojis.
+- Cada imagem foi aberta e conferida antes de entrar no repositório.
+- Os links relativos de todos os documentos foram conferidos por script.
+- A branch só altera arquivos dentro da minha pasta.
+- Cada ponto da revisão foi conferido no registro das sessões antes de ser corrigido. A seção do README "O que eu adicionei que a IA sozinha não faria" ficou como eu tinha pedido, só com uma correção de fato. A revisão observou que ela inclui escolhas em que aceitei a recomendação da IA; o `DECISOES.md` mostra quais.
+- 95 testes passando, também numa cópia sem o CSV.
+
+**O que decidi.**
+- Transcripts em Markdown e JSONL compactado, sem o meu CLAUDE.md global e com o do projeto.
+- LinkedIn e portfólio no README.
+- Usar a lista montada pela IA como `DECISOES.md`, sem reescrevê-la.
+- A IA tira os prints, o Radar fica rodando local e o PR sai no padrão do desafio.
+- Sem revisão da análise por uma IA de outro fornecedor.
+- Tirar dos transcripts a lista de pastas do meu vault e os nomes dos meus outros projetos.
+
+**Em uma frase.** A entrega fecha com cada número rastreável, o processo à mostra e nenhum dado pessoal além do necessário.
+
+**Transcript.** Sessão 1, em `evidencias/transcripts/`.

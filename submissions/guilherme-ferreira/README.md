@@ -157,10 +157,10 @@ O guia para quem não é da área técnica está em [`process-log/00_COMO_LER.md
 ### Workflow
 
 1. **Pesquisa (sessão 0, cerca de 1 hora).** Pedi à IA para ler o repositório, os PRs e as 176 reviews públicas do avaliador, e usei a síntese dela como critério de qualidade. Pedi um plano, pedi a outro modelo para achar as falhas dele (achou 9) e mandei refazer com as skills de marketing. Os números deste workflow saem dos transcripts.
-2. **Execução (sessão 1, cerca de 7 horas), em fases.** Ambiente, baseline, laudo do dado, análise, estratégia, Radar e fechamento. Em cada fase, a IA parou nas decisões que o plano marcava como minhas, e cada fase terminou com testes passando, um commit e uma entrada no diário.
+2. **Execução (sessão 1, cerca de 8 horas no relógio, das quais 1h40 parada por erro de conexão com a API), em fases.** Ambiente, baseline, laudo do dado, análise, estratégia, Radar e fechamento. Em cada fase, a IA parou nas decisões que o plano marcava como minhas, e cada fase terminou com testes passando, um commit e uma entrada no diário.
 3. **Conferência.** Cada número dos documentos foi procurado na saída do notebook antes do commit. O Radar foi conferido na tela, em modo claro, escuro e na largura de celular, e revisado por outra instância do Claude que não participou da implementação.
 
-Durações medidas pelos horários dos [transcripts](process-log/evidencias/transcripts/).
+**Iterações, até a abertura do PR:** 20 mensagens minhas, 17 rodadas de perguntas de decisão (31 perguntas) e 30 commits. Durações e contagens medidas nos [transcripts](process-log/evidencias/transcripts/) e no histórico do git.
 
 ### Onde a IA errou e como corrigi
 

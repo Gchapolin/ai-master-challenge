@@ -12,6 +12,7 @@ Horários de Brasília, 25/09/2026. "S0" é a sessão de pesquisa e "S1" a de ex
 |---|---|---|
 | S0 13:31 | "analisa os PR dos outros canditados" | Usar as reviews públicas do avaliador como critério de qualidade |
 | S0 13:49 | "Cria a estratégia para o 004 Social. QUer uma abordagem com todos os pontos de sucesso do outros candidatos, quero um log melhor e mais claro para pessoas fora do contexto de tecnologia analisarem." | O desafio 004 e um process log para quem não é da área técnica |
+| S0 13:51 | "me mostra" e "não começa ainda", enviadas enquanto a IA criava a branch e as pastas da entrega | Pedi para ver o plano e segurei o início da execução |
 | S0 13:56 | "reavalia o plano com fable e veja as falhas." | Revisão do plano por outro modelo, que achou 9 falhas |
 | S0 13:58 | "sim, mas antes, usa as skills de mkt que temos aqui com base nesse escopo e crie o plano." | Frameworks de marketing como base da estratégia |
 | S0 14:09 | "3. pode fazer de acordo como teste." | Deploy do Radar no escopo, tratado como teste |
