@@ -38,6 +38,32 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 
 ---
 
+## Fase 1 — Baseline (feita no fechamento, 25/09/2026)
+
+**O que eu queria saber.** O que uma IA entrega quando recebe só o enunciado e o CSV. Sem isso, não dá para mostrar onde a minha entrega vai além de "colei o enunciado na IA".
+
+**O que pedi.** Um Claude sem nenhum contexto meu, só com o enunciado e o CSV. A IA tinha recomendado usar uma IA de outro fornecedor.
+
+**O que a IA respondeu.**
+- A primeira tentativa rodou como subagente da sessão de trabalho. A IA estranhou o agente escrevendo testes automáticos, que é uma regra minha, e foi olhar: ele tinha herdado o meu CLAUDE.md global e o do projeto, que descreve o meu método (limiar de 10%, Benjamini-Hochberg, mínimo de 30 posts). Ela parou o agente e descartou o resultado.
+- Refez no modo seguro do Claude Code, numa pasta vazia com o CSV, com o enunciado sem nenhuma alteração.
+- Em 4 minutos, o baseline concluiu sozinho que o resultado não tem sinal e que o dado parece gerado.
+- Ele não olhou a operação de patrocínio, não provou que o método acharia um efeito, usou o tamanho do creator depois de mostrar que essa coluna não é confiável e escreveu o process log como se fosse o candidato.
+
+**Como conferi.**
+- Antes do baseline, um teste curto na mesma configuração perguntou ao modelo se ele tinha recebido CLAUDE.md, memória ou regras. Resposta: "NENHUMA". O registro da sessão do baseline também não tem nenhum anexo de instruções.
+- Conferi no dado uma afirmação dele que eu não tinha: a mistura de idiomas é a mesma em todas as plataformas, inclusive nas chinesas. Confere.
+- Conferi cada contradição apontada contra o próprio texto dele e contra a minha análise.
+
+**O que decidi.**
+- Baseline num Claude sem contexto, do mesmo fornecedor, declarado como tal.
+
+**Em uma frase.** Uma IA sem contexto descobre em 4 minutos que o dado não tem sinal; o que ela não entrega é o que fazer com isso na segunda-feira.
+
+**Transcript.** Sessão 1, em `evidencias/transcripts/`, e a sessão do baseline em [`evidencias/baseline/transcript.md`](evidencias/baseline/transcript.md). A comparação completa está em [`evidencias/baseline/comparacao.md`](evidencias/baseline/comparacao.md).
+
+---
+
 ## Fase 2 — Métricas, método e laudo do dado (25/09/2026)
 
 **O que eu queria saber.** Se o arquivo consegue dizer o que funciona e se o método de análise acharia um efeito caso ele existisse.
