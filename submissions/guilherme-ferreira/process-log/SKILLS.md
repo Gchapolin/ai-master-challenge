@@ -9,14 +9,15 @@ Uma skill é um conjunto de instruções que o Claude Code carrega quando a tare
 | social, influencer-marketing, ab-testing, analytics, content-strategy | Plugin marketing-skills 2.10.0 ([coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills), licença MIT) |
 | brainstorming, writing-plans, executing-plans, test-driven-development | Plugin superpowers 6.4.1 ([obra/superpowers](https://github.com/obra/superpowers), licença MIT) |
 | dataviz | Vem com o Claude Code |
-| save-session e graphify | Minhas, instaladas na minha máquina, junto com o vault do Obsidian |
+| save-session | Minha, instalada na minha máquina, junto com o vault do Obsidian |
+| graphify | De terceiros ([safishamsi/graphify](https://github.com/safishamsi/graphify)), instalada por mim no mesmo setup |
 
 ## Por etapa
 
 | Etapa | Skill ou ferramenta | Para que serviu |
 |---|---|---|
 | **Pesquisa** (S0, 13:28 a 14:32) | GitHub CLI e dois subagentes | Ler os PRs e as reviews públicas do avaliador e montar o critério de qualidade |
-| | Modelo Claude Fable 5.1 (S0 13:56) | Revisar o primeiro plano, que era do Opus. Achou 9 falhas |
+| | Modelo Claude Fable 5.1 (S0 13:56 em diante) | Revisar o primeiro plano, que era do Opus (achou 9 falhas), e conduzir o resto da pesquisa: o plano refeito, que foi o executado, e o CLAUDE.md do projeto |
 | | social, influencer-marketing, ab-testing, analytics, content-strategy (S0 13:58) | Refazer o plano com frameworks de marketing: métricas por objetivo, faixas de creator, divulgação, hipóteses, rastreamento |
 | | save-session (S0 14:27) | Gravar o resumo da pesquisa em `notes/Sessoes/`, na pasta do projeto, e na memória do Claude |
 | **Fase 0, ambiente** (S1 14:43) | Consulta ao grafo, ao vault e às notas | Antes de ler código, o Claude procura o grafo do projeto, a pasta dele no vault e as notas de sessão. Não havia grafo nem pasta no vault; havia o resumo da pesquisa, lido às 14:44 |

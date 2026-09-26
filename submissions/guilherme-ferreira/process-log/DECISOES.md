@@ -2,7 +2,7 @@
 
 As decisões humanas desta entrega: o que a IA perguntou ou propôs, o que eu escolhi, quando e onde está a prova.
 
-**Como este arquivo foi feito.** O plano previa que eu escrevesse este arquivo com as minhas palavras. No fechamento, decidi usar a lista que a IA montou a partir das perguntas e respostas registradas nos transcripts, depois de revisá-la. As citações são literais, com os erros de digitação originais. Em cada pergunta, a IA explicou as opções antes de perguntar; as explicações estão nos transcripts, no horário indicado.
+**Como este arquivo foi feito.** O plano previa que eu escrevesse este arquivo com as minhas palavras. No fechamento, aprovei usar a lista que a IA montou a partir das perguntas e respostas registradas nos transcripts, sem reescrevê-la ("1. pode manter", S1 21:44). A seção E, com as outras decisões dessa mesma mensagem, a IA acrescentou depois. As citações são literais, com os erros de digitação originais. Em cada pergunta, a IA explicou as opções antes de perguntar; as explicações estão nos transcripts, no horário indicado.
 
 Horários de Brasília, 25/09/2026. "S0" é a sessão de pesquisa e "S1" a de execução ([`evidencias/transcripts/`](evidencias/transcripts/)).
 
@@ -14,28 +14,31 @@ Horários de Brasília, 25/09/2026. "S0" é a sessão de pesquisa e "S1" a de ex
 | S0 13:49 | "Cria a estratégia para o 004 Social. QUer uma abordagem com todos os pontos de sucesso do outros candidatos, quero um log melhor e mais claro para pessoas fora do contexto de tecnologia analisarem." | O desafio 004 e um process log para quem não é da área técnica |
 | S0 13:56 | "reavalia o plano com fable e veja as falhas." | Revisão do plano por outro modelo, que achou 9 falhas |
 | S0 13:58 | "sim, mas antes, usa as skills de mkt que temos aqui com base nesse escopo e crie o plano." | Frameworks de marketing como base da estratégia |
-| S0 14:09 | "1. pode declarar 2. o mais agressivo possível. 3. pode fazer de acordo como teste." | Declarar a pesquisa; limiar de 10%, o mais exigente; deploy tratado como teste |
+| S0 14:09 | "3. pode fazer de acordo como teste." | Deploy do Radar no escopo, tratado como teste |
 | S1 15:01 | "https://g4business.com quando criar a aplicação, usa esse site com base de UX" | O visual do Radar |
-| S1 15:07 | "prints serão da aplicação somente. Segue ai." | Prints só da aplicação; seguir em modo automático depois do aviso da IA |
+| S1 15:07 | "prints serão da aplicação somente. Segue ai." | Prints só da aplicação (e seguir em automático, na seção B) |
 | S1 15:44 e 16:33 | Mandei os prints das minhas respostas | Entregar também os prints das decisões |
 | S1 19:35 | "aprovado, executa na sessão" | Execução do plano do Radar nesta sessão, com revisão final independente |
 | S1 20:22 | "coloca select box. Assim ficou uma merda." (com print da tela) | Reprovei o filtro de seleção múltipla do mapa ao ver a tela |
 | S1 20:26 | "Coloca um check box para selecionar mais de um" | Filtro com checkboxes |
+| S1 21:05 | "pega no vout no meu cv e coloca meu gitpages também" | LinkedIn do meu CV e o portfólio no GitHub Pages no README |
 
 ## B. Onde não segui a recomendação da IA
 
 | Quando | Pergunta | A IA recomendava | Eu escolhi |
 |---|---|---|---|
-| S1 14:50 | A sessão está em modo automático; como seguimos? | Trocar para manual | "está manual já, mas pode tirar os prints por favor." |
+| S0 14:09 | Limiar de efeito prático: 5% ou 10%? | 5% | "2. o mais agressivo possível.": 10% |
+| S1 15:07 | A sessão tinha voltado ao modo automático; a IA parou antes de editar | Voltar ao manual, se a mudança não tivesse sido de propósito (o plano pedia aprovação manual) | "Segue ai.": segui em modo automático |
 | S1 16:44 | Como tratar a marca G4 no Radar público? | Visual do G4, sem logo | Visual e logo do G4, com rodapé de protótipo |
 | S1 21:05 | Como fazer o baseline? | Rodar numa IA de outro fornecedor | Claude sem contexto |
-| S1 21:05 | LinkedIn no README? | (sem recomendação) | "pega no vout no meu cv e coloca meu gitpages também" |
 
 ## C. Onde aceitei a recomendação da IA
 
 | Quando | Pergunta | Escolha |
 |---|---|---|
 | S0 13:52 | Dependências, fork e linha Co-Authored-By | Instalar; criar o fork; manter a linha |
+| S0 14:09 | Declarar no log a leitura das reviews públicas? | "1. pode declarar" |
+| S1 14:50 | A sessão está em modo automático e o plano pede aprovação manual | Troquei para manual: "está manual já, mas pode tirar os prints por favor." |
 | S1 14:50 | Fork, dependências e e-mail dos commits | Criar o fork; lista enxuta; e-mail noreply do GitHub |
 | S1 14:56 | Captura de tela bloqueada pelo macOS | Eu tiro os prints e a IA organiza |
 | S1 15:33 | A camada de alocação também sai de sorteio: como fica a tese? | Duas camadas, reescritas: "Resultado: sem sinal. Operação: sem critério." |

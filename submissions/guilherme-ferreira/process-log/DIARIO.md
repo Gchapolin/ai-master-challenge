@@ -1,6 +1,6 @@
 # Diário
 
-Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi, o que a IA respondeu, como conferi, o que decidi e a fase em uma frase. O raciocínio completo de cada decisão está em `DECISOES.md`.
+Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi, o que a IA respondeu, como conferi, o que decidi e a fase em uma frase. As decisões, com as minhas falas citadas, estão em `DECISOES.md`; as explicações de cada opção estão nos transcripts.
 
 ---
 
@@ -46,7 +46,7 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 
 **O que a IA respondeu.**
 - A primeira tentativa rodou como subagente da sessão de trabalho. A IA estranhou o agente escrevendo testes automáticos, que é uma regra minha, e foi olhar: ele tinha herdado o meu CLAUDE.md global e o do projeto, que descreve o meu método (limiar de 10%, Benjamini-Hochberg, mínimo de 30 posts). Ela parou o agente e descartou o resultado.
-- Refez no modo seguro do Claude Code, numa pasta vazia com o CSV, com o enunciado sem nenhuma alteração.
+- Refez no modo seguro do Claude Code, numa pasta nova com o CSV, com o enunciado sem nenhuma alteração.
 - Em 4 minutos, o baseline concluiu sozinho que o resultado não tem sinal e que o dado parece gerado.
 - Ele não olhou a operação de patrocínio, não provou que o método acharia um efeito, usou o tamanho do creator depois de mostrar que essa coluna não é confiável e escreveu o process log como se fosse o candidato.
 
@@ -68,7 +68,7 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 
 **O que eu queria saber.** Se o arquivo consegue dizer o que funciona e se o método de análise acharia um efeito caso ele existisse.
 
-**O que pedi.** "Segue aí." O Claude Code executou a Fase 2 do plano, escrevendo cada teste automático antes do código.
+**O que pedi.** "Segue ai." O Claude Code executou a Fase 2 do plano, escrevendo cada teste automático antes do código.
 
 **O que a IA respondeu.**
 - Views, likes, shares e comentários se comportam como sorteio em torno de um valor fixo: nas quatro métricas, o desvio-padrão é igual à raiz da média.
@@ -154,7 +154,7 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 - Donos das regras: time de parcerias (fit e recorrência), jurídico e social (divulgação), Head de Marketing (foco), analista de dados (rastreamento).
 - Primeira rodada de testes procura efeitos de 20%, para caber em 30 dias.
 
-**Em uma frase.** A estratégia corrige o patrocínio já e usa 30 dias de testes rastreados para gerar o dado que o arquivo não tem.
+**Em uma frase.** A estratégia corrige o patrocínio já e usa testes rastreados, o primeiro em 30 dias, para gerar o dado que o arquivo não tem.
 
 **Transcript.** Sessão 1, em `evidencias/transcripts/`.
 
@@ -171,7 +171,7 @@ Uma entrada por fase, sempre no mesmo formato: o que eu queria saber, o que pedi
 **O que a IA respondeu.**
 - Um desenho em quatro partes, que aprovei uma a uma: dados vindos de resumos gerados por script (a base bruta não entra no repositório), as quatro telas, o visual do G4 com rodapé de protótipo, e testes e deploy.
 - No Streamlit Cloud, com o app numa subpasta, o arquivo de tema teria de ficar na raiz do repositório, o que as regras do desafio proíbem. Por isso o visual foi aplicado por CSS.
-- Um plano de 10 tarefas, cada uma com os testes escritos antes do código. No fim, eram 83 testes.
+- Um plano de 10 tarefas, cada uma com os testes escritos antes do código. Ao fim das 10 tarefas, eram 83 testes; com as correções da revisão, 91; com os filtros de checkbox, 95.
 
 **Como conferi.**
 - Cada tarefa terminou com a suíte inteira passando e um commit. As decisões fora do plano ficaram registradas, com motivo e custo se estiverem erradas.

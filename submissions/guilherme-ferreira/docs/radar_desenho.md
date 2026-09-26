@@ -104,8 +104,8 @@ solution/
   - Resumos ausentes geram a mensagem "rode `python solution/gerar_resumos.py`".
   - Coluna ausente gera uma mensagem com o nome da coluna.
 - **Rodar local:** da raiz do repo, `streamlit run submissions/guilherme-ferreira/solution/app/radar.py`.
-- **Deploy:** o candidato cria o app em share.streamlit.io, com repo `Gchapolin/ai-master-challenge`, branch `submission/guilherme-ferreira`, arquivo `submissions/guilherme-ferreira/solution/app/radar.py` e Python 3.12. O `config.toml` do Streamlit não é usado, porque no Cloud ele teria de ficar na raiz do repo.
-- **Prints:** o candidato tira os da aplicação; eles ficam em `process-log/evidencias/screenshots/05-radar_NN.png`.
+- **Deploy:** o candidato cria o app em share.streamlit.io, com repo `Gchapolin/ai-master-challenge`, branch `submission/guilherme-ferreira`, arquivo `submissions/guilherme-ferreira/solution/app/radar.py` e Python 3.12. O `config.toml` do Streamlit não é usado, porque no Cloud ele teria de ficar na raiz do repo. No fechamento, o deploy não foi feito: o Radar roda local (README; DECISOES, seção E).
+- **Prints:** ficam em `process-log/evidencias/screenshots/05-radar_NN_*.png`. No fechamento, a pedido do candidato, foram tirados pela IA com o Chrome sem janela.
 
 ## Fora do escopo
 

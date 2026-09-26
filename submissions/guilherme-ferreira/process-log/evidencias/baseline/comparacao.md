@@ -5,10 +5,10 @@ O que uma IA entrega quando recebe só o enunciado e o CSV, sem nada do meu trab
 ## Como foi feito
 
 - **Mesmo fornecedor de IA:** Claude Opus 5.5, o mesmo modelo da sessão de trabalho, rodando no Claude Code em modo seguro, que desliga CLAUDE.md, skills, plugins, hooks e servidores MCP. A memória também ficou de fora: a pasta de trabalho era nova.
-- **Entrada:** o enunciado do desafio sem nenhuma alteração, mais uma nota com o caminho do CSV e do Python ([`prompt.md`](prompt.md)). Pasta vazia, só com o CSV. Busca na web e subagentes bloqueados.
+- **Entrada:** o enunciado do desafio sem nenhuma alteração, mais uma nota com o caminho do CSV e do Python ([`prompt.md`](prompt.md)). Pasta nova, com o CSV e os arquivos da própria execução (o prompt e os de registro de tempo e saída). Busca na web e subagentes bloqueados.
 - **Execução:** 4 minutos, 10 turnos, US$ 1,01, nenhuma permissão negada. A resposta final está em [`resposta.md`](resposta.md); os arquivos que ele criou estão em [`arquivos/`](arquivos/), sem edição; a sessão inteira está em [`transcript.md`](transcript.md).
 - **Isolamento conferido de duas formas:** um teste na mesma configuração perguntou ao modelo se ele tinha recebido CLAUDE.md, memória ou regras (resposta: "NENHUMA"), e o registro da sessão do baseline não tem nenhum anexo de instruções.
-- **Primeira tentativa descartada.** Rodou como subagente da sessão de trabalho e herdou o CLAUDE.md do projeto, que descreve o meu método (limiar de 10%, Benjamini-Hochberg, mínimo de 30 posts). Parei o agente antes do fim e não usei nada dele.
+- **Primeira tentativa descartada.** Rodou como subagente da sessão de trabalho e herdou o meu CLAUDE.md global e o do projeto, que descreve o meu método (limiar de 10%, Benjamini-Hochberg, mínimo de 30 posts). A IA parou o agente antes do fim, e nada dele foi usado.
 
 ## O que o baseline acertou
 

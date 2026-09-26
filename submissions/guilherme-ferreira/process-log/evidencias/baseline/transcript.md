@@ -1,6 +1,6 @@
 # Baseline: o enunciado cru num Claude sem contexto (25/09/2026)
 
-Exportado da sessão do Claude Code. Aparecem as mensagens enviadas ao Claude, as respostas às perguntas de decisão, as mensagens do Claude e uma linha por ferramenta usada. Ficaram de fora o raciocínio interno do modelo, os resultados das ferramentas e as imagens; tudo isso está no JSONL compactado ao lado. E-mail, caminhos da pasta pessoal e o CLAUDE.md global do candidato foram removidos.
+Exportado da sessão do Claude Code. Aparecem as mensagens enviadas ao Claude, as respostas às perguntas de decisão, as mensagens do Claude e uma linha por ferramenta usada. Os resultados das ferramentas, e o raciocínio interno do modelo onde o Claude Code o gravou, ficam só no JSONL compactado ao lado. Nos dois formatos, as imagens viram uma nota, e saem o e-mail, os caminhos da pasta pessoal, a configuração pessoal do Claude, o ID da organização, a cópia do prompt de sistema, emojis e os nomes de outros projetos do candidato, quando aparecem.
 
 ### Enunciado enviado pela sessão de trabalho (25/09 21:18)
 

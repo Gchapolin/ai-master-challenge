@@ -81,7 +81,7 @@ Como ler:
 - **+10%** é a fronteira. A regra pede diferença **acima** de 10%, e o efeito medido fica em torno de 10%, às vezes um pouco acima, às vezes um pouco abaixo. Por isso vira sinal em cerca de metade das rodadas. É o comportamento esperado de um limiar, não uma falha.
 - Nenhuma célula sem efeito virou sinal por engano em 600 rodadas.
 
-**A regra de sinal**, definida antes de olhar os resultados: a diferença precisa passar de 10% sobre a média dos outros posts, continuar confiável depois da correção para muitas comparações ao mesmo tempo (Benjamini-Hochberg, p ajustado abaixo de 0,05) e vir de pelo menos 30 posts. O código está em [`src/estatistica.py`](src/estatistica.py) e é coberto por testes automáticos.
+**A regra de sinal**, definida antes de comparar os grupos: a diferença precisa passar de 10% sobre a média dos outros posts, continuar confiável depois da correção para muitas comparações ao mesmo tempo (Benjamini-Hochberg, p ajustado abaixo de 0,05) e vir de pelo menos 30 posts. O código está em [`src/estatistica.py`](src/estatistica.py) e é coberto por testes automáticos.
 
 ## O que o brief promete e o arquivo não tem
 

@@ -1,6 +1,6 @@
 # Estratégia: o que fazer a partir de segunda-feira
 
-**Em uma frase:** não há dado para escolher o que postar, mas há dado de sobra para parar de patrocinar sem critério; a estratégia corrige o patrocínio já e gera, em 30 dias, o dado que falta.
+**Em uma frase:** não há dado para escolher o que postar, mas há dado de sobra para parar de patrocinar sem critério; a estratégia corrige o patrocínio já e começa a gerar o dado que falta, com o primeiro teste nos primeiros 30 dias.
 
 Os números vêm do [laudo](01_laudo_do_dado.md), da [análise](02_analise.md) e da seção 3 de [`notebooks/analise.ipynb`](notebooks/analise.ipynb) (§3). O arquivo não tem custo, então todo gasto usa uma premissa declarada: **US$ 1.500 por post patrocinado**, com sensibilidade entre US$ 500 e US$ 5.000.
 
@@ -9,7 +9,7 @@ Os números vêm do [laudo](01_laudo_do_dado.md), da [análise](02_analise.md) e
 1. **Esta semana:** rastreamento mínimo, auditoria de divulgação e congelamento de patrocínio novo sem critério (seção 4).
 2. **Política de patrocínio:** cinco regras que valem para todo patrocínio novo (seção 2).
 3. **Parar de fazer:** quatro práticas que atingem 94,3% dos posts patrocinados (seção 3).
-4. **Programa de experimentos de 30 dias:** três hipóteses para gerar o dado que falta (seção 5).
+4. **Programa de experimentos:** três hipóteses para gerar o dado que falta, um teste de cada vez, cerca de 4 semanas cada; o primeiro cabe nos primeiros 30 dias (seção 5).
 5. **Ritual semanal de 30 minutos** com o Radar de Conteúdo (seção 6).
 
 ## 1. Onde concentrar esforço
@@ -27,7 +27,7 @@ Vale para todo patrocínio fechado a partir de agora.
 |---|---|---|---|
 | **R1. Fit antes de tamanho.** Patrocinador só em conteúdo compatível, pelo mapa de fit (seção 7). | 60,1% dos posts patrocinados não têm relação com o patrocinador, a mesma parcela de um sorteio (§2.2) | % de patrocínios novos com fit. Meta: 100%, exceto o grupo de controle do teste H1 | Se o teste H1 mostrar que fit não muda a venda |
 | **R2. Divulgação explícita.** A publicidade é identificada na legenda, junto do conteúdo, dita no próprio vídeo e marcada com o rótulo de parceria paga da plataforma. Hashtag no meio de outras não basta. | 47,2% dos patrocínios têm divulgação implícita, e 27,4% ficam só nas hashtags (§2.2) | % de posts patrocinados auditados com divulgação correta. Meta: 100% | Não se revisa: é exigência de autorregulação e de lei (fontes abaixo) |
-| **R3. Foco.** Todo patrocínio tem objetivo, métrica e meta registrados antes de ir ao ar, e a lista de creators é curta, escolhida por fit de público. | O patrocínio é a mesma parcela (cerca de 43%) em toda plataforma, categoria e formato, e 4.979 dos 5.000 creators já foram patrocinados (§2.2) | % de patrocínios com objetivo e meta registrados antes de ir ao ar. Meta: 100% | A cada trimestre, com os resultados dos testes |
+| **R3. Foco.** Todo patrocínio tem objetivo, métrica e meta registrados antes de ir ao ar, e a lista de creators é curta, escolhida por fit de público. | O patrocínio é a mesma parcela (cerca de 43%) em toda plataforma, categoria e formato, e 4.979 dos 5.000 creators já foram patrocinados (§2.2; laudo, teste 3) | % de patrocínios com objetivo e meta registrados antes de ir ao ar. Meta: 100% | A cada trimestre, com os resultados dos testes |
 | **R4. Parceria recorrente.** Contratos de vários posts com o mesmo patrocinador, remuneração híbrida (fixo mais desempenho) e direito de usar o conteúdo como anúncio pago por 3 a 6 meses, a janela comum segundo a skill de influencer marketing. | 90,0% dos 18.005 patrocinadores aparecem num post só, somando 72,6% dos posts patrocinados (§2.2 e §3) | % de posts patrocinados em contratos de 3 ou mais posts | Se o teste H2 mostrar que o segundo post não rende mais |
 | **R5. Nada vai ao ar sem rastreamento.** Cupom, link com UTM e página de destino por creator e por post. | O arquivo não tem custo, clique nem venda: hoje não dá para calcular retorno de nenhum patrocínio (§2.2) | % de posts patrocinados com UTM e cupom. Meta: 100% | Não se revisa: sem isso nenhuma outra regra pode ser medida |
 
@@ -59,7 +59,7 @@ As práticas se sobrepõem: o mesmo post pode ter mais de um problema. O gasto e
 3. **Congelar patrocínio novo sem fit e sem objetivo** (R1 e R3) até a lista curta de creators estar pronta.
 4. **Seguidores de uma fonte só.** Coletar toda semana o número de seguidores pela plataforma, com data, para que o tamanho do creator volte a ser confiável.
 
-## 5. Programa de experimentos (30 dias)
+## 5. Programa de experimentos
 
 **Quanto dá para detectar em 30 dias (§3).** Hoje saem 214 posts patrocinados por semana. A variação real das métricas de venda só vai ser conhecida com o rastreamento. Até lá, a conta supõe coeficiente de variação 1.
 
@@ -68,7 +68,7 @@ As práticas se sobrepõem: o mesmo post pode ter mais de um problema. O gasto e
 | 10% | 1.570 | 15 |
 | 20% | 393 | 4 |
 
-Por isso a primeira rodada procura efeitos de **20% ou mais**, o que cabe em 30 dias. O que passar é confirmado depois, com o limiar de 10% usado na análise. As duas primeiras semanas de rastreamento dão a variação real, e o Radar refaz a conta.
+Por isso cada teste procura efeitos de **20% ou mais**, o que cabe em cerca de 4 semanas. Como os três disputam os mesmos posts patrocinados, eles rodam um de cada vez: o H1 nos primeiros 30 dias, depois o H2 e o H3, cerca de 4 semanas cada. O que passar é confirmado depois, com o limiar de 10% usado na análise. As duas primeiras semanas de rastreamento dão a variação real, e o Radar refaz a conta.
 
 **Hipóteses**, no formato "Porque [dado], acreditamos que [mudança] vai causar [resultado]; saberemos quando [métrica]":
 
@@ -91,7 +91,7 @@ ICE é a média de impacto, confiança e facilidade, de 1 a 10. **Ordem:** H1, d
 ## 6. Ritual
 
 - **Toda segunda, 30 minutos, com o Radar:**
-  - os 3 melhores e os 3 piores posts rastreados da semana, pela métrica do objetivo de cada um;
+  - os 3 melhores e os 3 piores da semana, pela métrica do objetivo de cada um: hoje, grupos de posts, porque o arquivo não tem rastreamento; com o rastreamento, os próprios posts;
   - os guardrails dos testes em andamento;
   - o resultado da auditoria de divulgação.
 - **A cada 15 dias:** fechar os testes que atingiram a amostra, registrar no playbook e começar o próximo.
@@ -104,4 +104,4 @@ ICE é a média de impacto, confiança e facilidade, de 1 a 10. **Ordem:** H1, d
 | Custo médio por post patrocinado | US$ 1.500 (sensibilidade de US$ 500 a 5.000) | Faixas de referência por tamanho de creator da skill de influencer marketing usada no processo: nano até US$ 100, micro de US$ 100 a 1.500, mid de US$ 1.500 a 10.000, macro a partir de US$ 10.000. A própria skill trata essas faixas como ponto de partida para negociar, não como preço. |
 | Mapa de fit entre patrocinador e conteúdo | Cosméticos com beauty; moda com beauty e lifestyle; eletrônicos e games com tech; comida e viagem com lifestyle | Decisão do candidato (análise, §2.2) |
 | Coeficiente de variação das métricas de venda | 1, até ser medido | Cenário do meio da §3; o rastreamento mede o valor real em duas semanas |
-| Efeito mínimo da primeira rodada de testes | 20% | É o que cabe em 30 dias com o volume atual (§3) |
+| Efeito mínimo de cada teste | 20% | É o que cabe em cerca de 4 semanas com o volume atual (§3) |
